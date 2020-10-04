@@ -1,13 +1,14 @@
 # Example Android Application - 2020
 
-> Just for something fun to do, we will build a set of D&D Dice.
+> This will be a simple D&D Dice app.
+
+The whole goal of this app is to re-familiarize myself with Android. It's been a while since I played with it, so it's probably time to refresh my take on all the little changes to the Android Studio IDE, Java, and the Android JDK.
 
 
-## My Env and Stack
+## My Environment and Stack
 
 * Ubuntu 18.04 (64-bit)
 * Android Studio 4.0.1
 * Java v11.0.8
 * Gradle v6.1.1
-* OpenJDK
 
