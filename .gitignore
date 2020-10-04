@@ -11,6 +11,14 @@ proguard/
 # Log Files
 *.log
 
+# built application files
+*.apk
+*.ap_
+*.jar
+*.war
+*.ear
+!gradle/wrapper/gradle-wrapper.jar
+
 # Android Studio Navigation editor temp files
 .navigation/
 
@@ -19,7 +27,8 @@ captures/
 
 # IntelliJ
 *.iml
-.idea/
+/.idea/**
+.idea/**
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
