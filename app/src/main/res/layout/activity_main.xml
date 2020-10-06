@@ -19,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
+            android:backgroundTint="@color/colorText"
             android:hint=""
-            android:textSize="30sp" />
+            android:textSize="40sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -181,7 +182,8 @@
             android:id="@+id/linear5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_margin="10sp"
+            android:layout_weight="2"
             android:baselineAligned="false"
             android:orientation="vertical">
 
@@ -190,7 +192,6 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
                 android:layout_weight="1"
                 android:text="+"
                 android:textSize="30sp" />
@@ -200,7 +201,6 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
                 android:layout_weight="1"
                 android:text="-"
                 android:textSize="30sp" />
@@ -210,7 +210,6 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
                 android:layout_weight="1"
                 android:text="*"
                 android:textSize="30sp" />
@@ -220,7 +219,6 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
                 android:layout_weight="1"
                 android:text="/"
                 android:textSize="30sp" />
@@ -238,7 +236,7 @@
             android:id="@+id/buttoneql"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20sp"
+            android:layout_margin="10sp"
             android:text="="
             android:textSize="30sp" />
 
