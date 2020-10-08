@@ -36,7 +36,9 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="4D"
                     android:textSize="30sp" />
 
@@ -45,7 +47,9 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="10D"
                     android:textSize="30sp" />
 
@@ -64,7 +68,9 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="6D"
                     android:textSize="30sp" />
 
@@ -73,7 +79,9 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="12D"
                     android:textSize="30sp" />
 
@@ -89,25 +97,26 @@
 
                 <Button
                     android:id="@+id/button8"
-                    style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="8D"
                     android:textSize="30sp" />
 
                 <Button
                     android:id="@+id/button20"
-                    style="?android:attr/buttonStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5sp"
                     android:layout_weight="1"
+                    android:background="@drawable/selectable_button"
                     android:text="20D"
                     android:textSize="30sp" />
 
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout

@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
     int dieSides = 0;
 
     protected void deClickAll() {
-        button4.setPressed(false);
-        button6.setPressed(false);
-        button8.setPressed(false);
-        button10.setPressed(false);
-        button12.setPressed(false);
-        button20.setPressed(false);
+        button4.setSelected(false);
+        button6.setSelected(false);
+        button8.setSelected(false);
+        button10.setSelected(false);
+        button12.setSelected(false);
+        button20.setSelected(false);
     }
 
     @Override
@@ -41,16 +41,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button4.setPressed(true);
+                button4.setSelected(true);
                 dieSides = 4;
             }
         });
+
+        /*
+        button4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    v.performClick();
+                    deClickAll();
+                    button4.setPressed(true);
+                    dieSides = 4;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        */
 
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button6.setPressed(true);
+                button6.setSelected(true);
                 dieSides = 6;
             }
         });
@@ -59,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button8.setPressed(true);
+                button8.setSelected(true);
                 dieSides = 8;
             }
         });
@@ -68,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button10.setPressed(true);
+                button10.setSelected(true);
                 dieSides = 10;
             }
         });
@@ -77,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button12.setPressed(true);
+                button12.setSelected(true);
                 dieSides = 12;
             }
         });
@@ -86,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deClickAll();
-                button20.setPressed(true);
+                button20.setSelected(true);
                 dieSides = 20;
             }
         });
