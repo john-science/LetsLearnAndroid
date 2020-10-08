@@ -1,5 +1,4 @@
 package net.antineutrino.dnd_dice;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,21 +6,14 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity {
 
     Button button4, button6, button8, button10, button12, button20, buttonRoll;
     EditText editText;
     int dieSides = 0;
-
-    protected void deClickAll() {
-        button4.setSelected(false);
-        button6.setSelected(false);
-        button8.setSelected(false);
-        button10.setSelected(false);
-        button12.setSelected(false);
-        button20.setSelected(false);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,33 +32,16 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button4.setSelected(true);
                 dieSides = 4;
             }
         });
 
-        /*
-        button4.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    v.performClick();
-                    deClickAll();
-                    button4.setPressed(true);
-                    dieSides = 4;
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-        */
-
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button6.setSelected(true);
                 dieSides = 6;
             }
@@ -75,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button8.setSelected(true);
                 dieSides = 8;
             }
@@ -84,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button10.setSelected(true);
                 dieSides = 10;
             }
@@ -93,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         button12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button12.setSelected(true);
                 dieSides = 12;
             }
@@ -102,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         button20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deClickAll();
+                deSelectAll();
                 button20.setSelected(true);
                 dieSides = 20;
             }
@@ -111,8 +86,30 @@ public class MainActivity extends AppCompatActivity {
         buttonRoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(dieSides + " Boom!");
+                editText.setText(String.format(Locale.US, "%5d", rollOneDie(dieSides)));
             }
         });
+    }
+
+    /**
+     * Rolls a single N-Sided die. This die is more fair than most.
+     *
+     * @param sides number of sides of the die
+     * @return random die roll (from 1 to sides inclusive)
+     */
+    protected int rollOneDie(int sides) {
+        return (int) (Math.random() * (sides) + 1);
+    }
+
+    /**
+     * Just ensure that if one die size is selected, the rest aren't.
+     */
+    protected void deSelectAll() {
+        button4.setSelected(false);
+        button6.setSelected(false);
+        button8.setSelected(false);
+        button10.setSelected(false);
+        button12.setSelected(false);
+        button20.setSelected(false);
     }
 }

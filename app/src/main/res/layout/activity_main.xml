@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
+    android:cursorVisible="false"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -39,7 +40,7 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="4D"
+                    android:text="D4"
                     android:textSize="30sp" />
 
                 <Button
@@ -50,9 +51,8 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="10D"
+                    android:text="D10"
                     android:textSize="30sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -71,7 +71,7 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="6D"
+                    android:text="D6"
                     android:textSize="30sp" />
 
                 <Button
@@ -82,9 +82,8 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="12D"
+                    android:text="D12"
                     android:textSize="30sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -102,7 +101,7 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="8D"
+                    android:text="D8"
                     android:textSize="30sp" />
 
                 <Button
@@ -112,9 +111,8 @@
                     android:layout_margin="5sp"
                     android:layout_weight="1"
                     android:background="@drawable/selectable_button"
-                    android:text="20D"
+                    android:text="D20"
                     android:textSize="30sp" />
-
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -132,7 +130,6 @@
             android:layout_margin="10sp"
             android:text="Roll"
             android:textSize="30sp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -147,6 +144,9 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:backgroundTint="@color/colorText"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:gravity="center"
             android:hint=""
             android:textSize="40sp" />
     </LinearLayout>
@@ -163,7 +163,10 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:backgroundTint="@color/colorText"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:gravity="center"
             android:hint=""
-            android:textSize="40sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
