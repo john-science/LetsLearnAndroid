@@ -1,8 +1,10 @@
 package net.antineutrino.dnd_dice;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,8 +18,9 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     Button button4, button6, button8, button10, button12, button20, buttonRoll;
-    EditText editText;
+    EditText editTextTotal, editTextDetails;
     int dieSides = 0;
+    Spinner spinnerNumDice, spinnerBonus;
 
     /**
      * Rolls a single N-Sided die.
@@ -57,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
         button12 = (Button) findViewById(R.id.button12);
         button20 = (Button) findViewById(R.id.button20);
         buttonRoll = (Button) findViewById(R.id.buttonRoll);
-        editText = (EditText) findViewById(R.id.edt1);
+        spinnerNumDice = (Spinner) findViewById(R.id.spinnerNumDice);
+        spinnerBonus = (Spinner) findViewById(R.id.spinnerBonus);
+        editTextTotal = (EditText) findViewById(R.id.edt1);
+        editTextDetails = (EditText) findViewById(R.id.edt2);
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button4.setSelected(true);
                 dieSides = 4;
             }
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button6.setSelected(true);
                 dieSides = 6;
             }
@@ -80,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button8.setSelected(true);
                 dieSides = 8;
             }
@@ -89,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button10.setSelected(true);
                 dieSides = 10;
             }
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         button12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button12.setSelected(true);
                 dieSides = 12;
             }
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         button20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deSelectAll();
+                deSelectDice();
                 button20.setSelected(true);
                 dieSides = 20;
             }
@@ -116,15 +122,33 @@ public class MainActivity extends AppCompatActivity {
         buttonRoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText.setText(String.format(Locale.US, "%5d", rollOneDie(dieSides)));
+                editTextTotal.setText(String.format(Locale.US, "%5d", rollOneDie(dieSides)));
             }
         });
+
+        spinnerNumDice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ;  // TODO: What?
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                ;  // TODO: What?
+            }
+        });
+
+
+
+        // set up initial state
+        button4.setSelected(true);
+        spinnerNumDice.setSelection(0);
+        spinnerBonus.setSelection(0);
     }
 
     /**
      * Just ensure that if one die size is selected, the rest aren't.
      */
-    protected void deSelectAll() {
+    protected void deSelectDice() {
         button4.setSelected(false);
         button6.setSelected(false);
         button8.setSelected(false);

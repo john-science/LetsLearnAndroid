@@ -25,8 +25,9 @@
         <item>20 x</item>
     </string-array>
 
-    <string name="add_prompt">How many dice?</string>
+    <string name="add_prompt">Plus what bonus?</string>
     <string-array name="add_arrays">
+        <item>+ 0</item>
         <item>+ 1</item>
         <item>+ 2</item>
         <item>+ 3</item>

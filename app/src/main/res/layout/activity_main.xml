@@ -101,7 +101,7 @@
         android:layout_weight="1">
 
         <Spinner
-            android:id="@+id/spinnerCount"
+            android:id="@+id/spinnerNumDice"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_margin="5sp"
@@ -124,7 +124,7 @@
             android:textSize="12sp" />
 
         <Spinner
-            android:id="@+id/spinnerCount2"
+            android:id="@+id/spinnerBonus"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_margin="5sp"
