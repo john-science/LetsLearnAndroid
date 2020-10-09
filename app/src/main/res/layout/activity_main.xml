@@ -10,115 +10,145 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/linear8"
+        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/linear1"
+            android:id="@+id/linear3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="1"
             android:baselineAligned="false"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/linear2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <Button
+                android:id="@+id/button4"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:baselineAligned="false"
-                android:orientation="vertical">
+                android:background="@drawable/selectable_button"
+                android:text="D4"
+                android:textSize="30sp" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/button4"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D4"
-                    android:textSize="30sp" />
+        <LinearLayout
+            android:id="@+id/linear4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button10"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D10"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <Button
+                android:id="@+id/button6"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:baselineAligned="false"
-                android:orientation="vertical">
+                android:background="@drawable/selectable_button"
+                android:text="D6"
+                android:textSize="30sp" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/button6"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D6"
-                    android:textSize="30sp" />
+        <LinearLayout
+            android:id="@+id/linear5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button12"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D12"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
                 android:layout_weight="1"
-                android:baselineAligned="false"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D8"
-                    android:textSize="30sp" />
-
-                <Button
-                    android:id="@+id/button20"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5sp"
-                    android:layout_weight="1"
-                    android:background="@drawable/selectable_button"
-                    android:text="D20"
-                    android:textSize="30sp" />
-            </LinearLayout>
+                android:background="@drawable/selectable_button"
+                android:text="D8"
+                android:textSize="30sp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear6"
+        android:id="@+id/linear7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linear8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button10"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_button"
+                android:text="D10"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button12"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_button"
+                android:text="D12"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button20"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/selectable_button"
+                android:text="D20"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear11"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -127,13 +157,13 @@
             android:id="@+id/buttonRoll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10sp"
+            android:layout_margin="5sp"
             android:text="Roll"
             android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/relative1"
+        android:id="@+id/relative12"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -142,7 +172,7 @@
             android:id="@+id/edt1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             android:backgroundTint="@color/colorText"
             android:cursorVisible="false"
             android:focusable="false"
@@ -152,7 +182,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear7"
+        android:id="@+id/linear13"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -161,7 +191,7 @@
             android:id="@+id/edt2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             android:backgroundTint="@color/colorText"
             android:cursorVisible="false"
             android:focusable="false"
