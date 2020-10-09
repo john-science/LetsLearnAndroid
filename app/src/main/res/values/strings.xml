@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">DnD Dice</string>
+
+    <string name="multiple_prompt">How many dice?</string>
+    <string-array name="multiple_arrays">
+        <item>1 x</item>
+        <item>2 x</item>
+        <item>3 x</item>
+        <item>4 x</item>
+        <item>5 x</item>
+        <item>6 x</item>
+        <item>7 x</item>
+        <item>8 x</item>
+        <item>9 x</item>
+        <item>10 x</item>
+        <item>11 x</item>
+        <item>12 x</item>
+        <item>13 x</item>
+        <item>14 x</item>
+        <item>15 x</item>
+        <item>16 x</item>
+        <item>17 x</item>
+        <item>18 x</item>
+        <item>19 x</item>
+        <item>20 x</item>
+    </string-array>
+
+    <string name="add_prompt">How many dice?</string>
+    <string-array name="add_arrays">
+        <item>+ 1</item>
+        <item>+ 2</item>
+        <item>+ 3</item>
+        <item>+ 4</item>
+        <item>+ 5</item>
+        <item>+ 6</item>
+        <item>+ 7</item>
+        <item>+ 8</item>
+        <item>+ 9</item>
+        <item>+ 10</item>
+        <item>+ 11</item>
+        <item>+ 12</item>
+        <item>+ 13</item>
+        <item>+ 14</item>
+        <item>+ 15</item>
+        <item>+ 16</item>
+        <item>+ 17</item>
+        <item>+ 18</item>
+        <item>+ 19</item>
+        <item>+ 20</item>
+    </string-array>
 </resources>

@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+// TODO: How do we auto-select D12 the first time the user logs in?
+// TODO: How do we remember the user's (3) selections between user log-ins?
+// TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
+// TODO: Localization! Spanish. Maybe German, Norwegian, Swedish, and Icelandic? Hindi, Mandarin...
 
 public class MainActivity extends AppCompatActivity {
 
