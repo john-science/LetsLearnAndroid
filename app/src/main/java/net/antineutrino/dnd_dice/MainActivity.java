@@ -19,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button button4, button6, button8, button10, button12, button20, buttonRoll;
     EditText editTextTotal, editTextDetails;
-    int dieSides = 0;
+    int dieSides, numDice, bonus = 0;
     Spinner spinnerNumDice, spinnerBonus;
+    String details = "";
 
     /**
      * Rolls a single N-Sided die.
@@ -122,27 +123,54 @@ public class MainActivity extends AppCompatActivity {
         buttonRoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editTextTotal.setText(String.format(Locale.US, "%5d", rollOneDie(dieSides)));
+                int[] rolls = rollDice(dieSides, numDice);
+                int total = bonus;
+                editTextTotal.setText("");
+                editTextDetails.setText("");
+                details = "";
+                for (int i = 0; i < rolls.length; i++) {
+                    total += rolls[i];
+                    if (i == 0) {
+                        details = String.format(Locale.US, "%5d", rolls[i]);
+                    } else {
+                        details += ", " + String.format(Locale.US, "%5d", rolls[i]);
+                    }
+                    editTextDetails.setText(details);
+                }
+
+                editTextTotal.setText(String.format(Locale.US, "%5d", total));
             }
         });
 
         spinnerNumDice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ;  // TODO: What?
+                numDice = position + 1;
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                ;  // TODO: What?
-            }
+            }  /* stub */
         });
 
+        spinnerBonus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bonus = position;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }  /* stub */
+        });
 
         // set up initial state
         button4.setSelected(true);
         spinnerNumDice.setSelection(0);
         spinnerBonus.setSelection(0);
+        dieSides = 4;
+        numDice = 1;
+        bonus = 0;
     }
 
     /**
