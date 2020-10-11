@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-// TODO: How do we auto-select D12 the first time the user logs in?
 // TODO: How do we remember the user's (3) selections between user log-ins?
 // TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
 // TODO: Localization! Spanish. Maybe German, Norwegian, Swedish, and Icelandic? Hindi, Mandarin...
@@ -18,7 +17,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     Button button4, button6, button8, button10, button12, button20, buttonRoll;
-    EditText editTextTotal, editTextDetails;
+    EditText editTextTotal, editTextDetails, editDisplay;
     int dieSides, numDice, bonus = 0;
     Spinner spinnerNumDice, spinnerBonus;
     String details = "";
@@ -63,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
         buttonRoll = (Button) findViewById(R.id.buttonRoll);
         spinnerNumDice = (Spinner) findViewById(R.id.spinnerNumDice);
         spinnerBonus = (Spinner) findViewById(R.id.spinnerBonus);
-        editTextTotal = (EditText) findViewById(R.id.edt1);
-        editTextDetails = (EditText) findViewById(R.id.edt2);
+        editTextTotal = (EditText) findViewById(R.id.edtTotal);
+        editTextDetails = (EditText) findViewById(R.id.edtDetails);
+        editDisplay = (EditText) findViewById(R.id.edtDisplay);
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button4.setSelected(true);
                 dieSides = 4;
+                editDisplay.setText("D4");
             }
         });
 
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button6.setSelected(true);
                 dieSides = 6;
+                editDisplay.setText("D6");
             }
         });
 
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button8.setSelected(true);
                 dieSides = 8;
+                editDisplay.setText("D8");
             }
         });
 
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button10.setSelected(true);
                 dieSides = 10;
+                editDisplay.setText("D10");
             }
         });
 
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button12.setSelected(true);
                 dieSides = 12;
+                editDisplay.setText("D12");
             }
         });
 
@@ -117,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button20.setSelected(true);
                 dieSides = 20;
+                editDisplay.setText("D20");
             }
         });
 
@@ -127,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
                 int total = bonus;
                 editTextTotal.setText("");
                 editTextDetails.setText("");
-                details = "";
+                details = "rolls: ";
                 for (int i = 0; i < rolls.length; i++) {
                     total += rolls[i];
                     if (i == 0) {
-                        details = String.format(Locale.US, "%5d", rolls[i]);
+                        details += String.format(Locale.US, "%5d", rolls[i]);
                     } else {
                         details += ", " + String.format(Locale.US, "%5d", rolls[i]);
                     }
@@ -165,11 +171,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // set up initial state
-        button4.setSelected(true);
+        button12.setSelected(true);
+        dieSides = 12;
+        editDisplay.setText("D12");
         spinnerNumDice.setSelection(0);
-        spinnerBonus.setSelection(0);
-        dieSides = 4;
         numDice = 1;
+        spinnerBonus.setSelection(0);
         bonus = 0;
     }
 
