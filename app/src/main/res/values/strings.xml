@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DnD Dice</string>
+    <string name="app_name">Roleplaying Dice</string>
 
     <string name="multiple_prompt">How many dice?</string>
     <string-array name="multiple_arrays">
