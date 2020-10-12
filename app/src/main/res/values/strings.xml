@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">Roleplaying Dice</string>
 
+    <string name="roll">Roll</string>g>
+    <string name="rolls">rolls</string>
+
+    <string name="d4">D4</string>
+    <string name="d6">D6</string>
+    <string name="d8">D8</string>
+    <string name="d10">D10</string>
+    <string name="d12">D12</string>
+    <string name="d20">D20</string>
+
     <string name="multiple_prompt">How many dice?</string>
-    <string-array name="multiple_arrays">
+    <string-array name="multiple_arrays" translatable="false">
         <item>1 x</item>
         <item>2 x</item>
         <item>3 x</item>
@@ -26,7 +36,7 @@
     </string-array>
 
     <string name="add_prompt">Plus what bonus?</string>
-    <string-array name="add_arrays">
+    <string-array name="add_arrays" translatable="false">
         <item>+ 0</item>
         <item>+ 1</item>
         <item>+ 2</item>

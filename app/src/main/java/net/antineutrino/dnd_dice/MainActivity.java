@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-// TODO: Localization! Spanish. Maybe German, Norwegian, Swedish, and Icelandic? Hindi, Mandarin...
+// TODO: Localization! Norwegian, Danish, Swedish, Spanish
 // TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
 // TODO: Making custom icons for android apps?
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button4.setSelected(true);
                 dieSides = 4;
-                editDisplay.setText("D4");
+                editDisplay.setText(R.string.d4);
             }
         });
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button6.setSelected(true);
                 dieSides = 6;
-                editDisplay.setText("D6");
+                editDisplay.setText(R.string.d6);
             }
         });
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button8.setSelected(true);
                 dieSides = 8;
-                editDisplay.setText("D8");
+                editDisplay.setText(R.string.d8);
             }
         });
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button10.setSelected(true);
                 dieSides = 10;
-                editDisplay.setText("D10");
+                editDisplay.setText(R.string.d10);
             }
         });
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button12.setSelected(true);
                 dieSides = 12;
-                editDisplay.setText("D12");
+                editDisplay.setText(R.string.d12);
             }
         });
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 deSelectDice();
                 button20.setSelected(true);
                 dieSides = 20;
-                editDisplay.setText("D20");
+                editDisplay.setText(R.string.d20);
             }
         });
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 int total = bonus;
                 editTextTotal.setText("");
                 editTextDetails.setText("");
-                details = "rolls: ";
+                details = getString(R.string.rolls) + ": ";
                 for (int i = 0; i < rolls.length; i++) {
                     total += rolls[i];
                     if (i == 0) {
@@ -187,22 +187,22 @@ public class MainActivity extends AppCompatActivity {
         spinnerNumDice.setSelection(numDice - 1);
         if (dieSides == 4) {
             button4.setSelected(true);
-            editDisplay.setText("D4");
+            editDisplay.setText(R.string.d4);
         } else if (dieSides == 6) {
             button6.setSelected(true);
-            editDisplay.setText("D6");
+            editDisplay.setText(R.string.d6);
         } else if (dieSides == 8) {
             button8.setSelected(true);
-            editDisplay.setText("D8");
+            editDisplay.setText(R.string.d8);
         } else if (dieSides == 10) {
             button10.setSelected(true);
-            editDisplay.setText("D10");
+            editDisplay.setText(R.string.d10);
         } else if (dieSides == 12) {
             button12.setSelected(true);
-            editDisplay.setText("D12");
+            editDisplay.setText(R.string.d12);
         } else {
             button20.setSelected(true);
-            editDisplay.setText("D20");
+            editDisplay.setText(R.string.d20);
         }
     }
 
@@ -216,7 +216,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("bonus", ((Spinner) findViewById(R.id.spinnerBonus)).getSelectedItemPosition());
         editor.apply();
     }
-
 
     /**
      * Just ensure that if one die size is selected, the rest aren't.

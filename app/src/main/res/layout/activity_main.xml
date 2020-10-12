@@ -26,7 +26,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D4"
+            android:text="@string/d4"
             android:textSize="30sp" />
 
         <Button
@@ -37,7 +37,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D6"
+            android:text="@string/d6"
             android:textSize="30sp" />
 
         <Button
@@ -47,7 +47,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D8"
+            android:text="@string/d8"
             android:textSize="30sp" />
     </LinearLayout>
 
@@ -68,7 +68,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D10"
+            android:text="@string/d10"
             android:textSize="30sp" />
 
         <Button
@@ -79,7 +79,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D12"
+            android:text="@string/d12"
             android:textSize="30sp" />
 
         <Button
@@ -89,7 +89,7 @@
             android:layout_margin="5sp"
             android:layout_weight="1"
             android:background="@drawable/selectable_button"
-            android:text="D20"
+            android:text="@string/d20"
             android:textSize="30sp" />
     </LinearLayout>
 
@@ -116,12 +116,12 @@
             android:layout_height="match_parent"
             android:layout_margin="0dp"
             android:layout_weight="1"
+            android:autofillHints=""
             android:background="@null"
             android:backgroundTint="@color/colorText"
             android:cursorVisible="false"
             android:focusable="false"
             android:gravity="center"
-            android:hint=""
             android:textSize="15sp" />
 
         <Spinner
@@ -146,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5sp"
-            android:text="Roll"
+            android:text="@string/roll"
             android:textSize="30sp" />
     </LinearLayout>
 
@@ -161,11 +161,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            android:autofillHints=""
             android:backgroundTint="@color/colorText"
             android:cursorVisible="false"
             android:focusable="false"
             android:gravity="center"
-            android:hint=""
             android:textSize="40sp" />
     </LinearLayout>
 
@@ -180,12 +180,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            android:autofillHints=""
             android:background="@null"
             android:backgroundTint="@color/colorText"
             android:cursorVisible="false"
             android:focusable="false"
             android:gravity="bottom"
-            android:hint=""
             android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>
