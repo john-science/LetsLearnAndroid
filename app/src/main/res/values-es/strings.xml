@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>                                                                                                                
+<resources>                                                                                                                                           
+    <string name="app_name">Dados de rol</string>
+    <string name="add_prompt">¿Más qué bonificación?</string>
+    <string name="roll">R</string>
+    <string name="rolls">R</string>
+    <string name="multiple_prompt">¿Cuantos dados?</string>
+</resources>
