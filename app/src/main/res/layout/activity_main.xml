@@ -186,6 +186,6 @@
             android:focusable="false"
             android:gravity="bottom"
             android:hint=""
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>

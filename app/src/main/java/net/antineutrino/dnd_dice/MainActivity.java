@@ -1,4 +1,6 @@
 package net.antineutrino.dnd_dice;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,17 +12,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-// TODO: How do we remember the user's (3) selections between user log-ins?
-// TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
 // TODO: Localization! Spanish. Maybe German, Norwegian, Swedish, and Icelandic? Hindi, Mandarin...
+// TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
+// TODO: Making custom icons for android apps?
 
 public class MainActivity extends AppCompatActivity {
 
     Button button4, button6, button8, button10, button12, button20, buttonRoll;
     EditText editTextTotal, editTextDetails, editDisplay;
-    int dieSides, numDice, bonus = 0;
     Spinner spinnerNumDice, spinnerBonus;
     String details = "";
+    int dieSides = 12;
+    int numDice = 1;
+    int bonus = 0;
 
     /**
      * Rolls a single N-Sided die.
@@ -169,26 +173,60 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }  /* stub */
         });
-
-        // set up initial state
-        button12.setSelected(true);
-        dieSides = 12;
-        editDisplay.setText("D12");
-        spinnerNumDice.setSelection(0);
-        numDice = 1;
-        spinnerBonus.setSelection(0);
-        bonus = 0;
     }
+
+    public void onStart() {
+        super.onStart();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        bonus = sharedPref.getInt("bonus", 0);
+        numDice = sharedPref.getInt("numDice", 1);
+        dieSides = sharedPref.getInt("dieSides", 12);
+
+        spinnerBonus.setSelection(bonus);
+        spinnerNumDice.setSelection(numDice - 1);
+        if (dieSides == 4) {
+            button4.setSelected(true);
+            editDisplay.setText("D4");
+        } else if (dieSides == 6) {
+            button6.setSelected(true);
+            editDisplay.setText("D6");
+        } else if (dieSides == 8) {
+            button8.setSelected(true);
+            editDisplay.setText("D8");
+        } else if (dieSides == 10) {
+            button10.setSelected(true);
+            editDisplay.setText("D10");
+        } else if (dieSides == 12) {
+            button12.setSelected(true);
+            editDisplay.setText("D12");
+        } else {
+            button20.setSelected(true);
+            editDisplay.setText("D20");
+        }
+    }
+
+    public void onStop() {
+        super.onStop();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("dieSides", dieSides);
+        editor.putInt("numDice", ((Spinner) findViewById(R.id.spinnerNumDice)).getSelectedItemPosition() + 1);
+        editor.putInt("bonus", ((Spinner) findViewById(R.id.spinnerBonus)).getSelectedItemPosition());
+        editor.apply();
+    }
+
 
     /**
      * Just ensure that if one die size is selected, the rest aren't.
      */
     protected void deSelectDice() {
-        button4.setSelected(false);
-        button6.setSelected(false);
-        button8.setSelected(false);
-        button10.setSelected(false);
-        button12.setSelected(false);
-        button20.setSelected(false);
+        ((Button) findViewById(R.id.button4)).setSelected(false);
+        ((Button) findViewById(R.id.button6)).setSelected(false);
+        ((Button) findViewById(R.id.button8)).setSelected(false);
+        ((Button) findViewById(R.id.button10)).setSelected(false);
+        ((Button) findViewById(R.id.button12)).setSelected(false);
+        ((Button) findViewById(R.id.button20)).setSelected(false);
     }
 }
