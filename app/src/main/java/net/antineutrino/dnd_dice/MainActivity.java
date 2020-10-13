@@ -12,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
-// TODO: Localization! Norwegian, Danish, Swedish, Spanish
 // TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
-// TODO: Making custom icons for android apps?
+
 
 public class MainActivity extends AppCompatActivity {
 

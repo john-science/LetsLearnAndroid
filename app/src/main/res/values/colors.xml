@@ -4,4 +4,5 @@
     <color name="colorButton">#333333</color>
     <color name="colorButtonPressed">#444444</color>
     <color name="colorText">#EEEEEE</color>
+    <color name="ic_launcher_background">#5E0001</color>
 </resources>
