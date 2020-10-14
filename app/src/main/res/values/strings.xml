@@ -60,4 +60,6 @@
         <item>+ 20</item>
     </string-array>
     <string name="rolls">rolls</string>
+    <string name="about">About</string>
+    <string name="github" translatable="false">GitHub</string>
 </resources>

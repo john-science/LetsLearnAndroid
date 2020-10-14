@@ -5,5 +5,9 @@
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textColorHint">@color/colorText</item>
         <item name="android:editTextColor">@color/colorText</item>
+        <item name="android:itemTextAppearance">@style/MenuItemTextAppearance</item>
+    </style>
+    <style name="MenuItemTextAppearance">
+        <item name="android:textColor">@color/colorBackground</item>
     </style>
 </resources>
