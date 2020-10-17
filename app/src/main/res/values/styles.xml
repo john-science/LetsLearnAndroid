@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="android:colorButtonNormal">@color/colorButton</item>
@@ -7,7 +8,17 @@
         <item name="android:editTextColor">@color/colorText</item>
         <item name="android:itemTextAppearance">@style/MenuItemTextAppearance</item>
     </style>
+
     <style name="MenuItemTextAppearance">
         <item name="android:textColor">@color/colorBackground</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

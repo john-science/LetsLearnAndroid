@@ -1,5 +1,7 @@
 package net.antineutrino.dnd_dice;
+import java.util.Locale;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,13 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Locale;
-
-// TODO: It looks like I have a title bar, can I have a ":" drop down there for 'about this ap'?
 
 
 public class MainActivity extends AppCompatActivity {
@@ -188,10 +185,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // TODO: Temporary
         switch (item.getItemId()) {
             case R.id.menuAbout:
-                Toast.makeText(this, "I'm some guy.", Toast.LENGTH_SHORT).show();
+                // This code will start the new activity when the settings button is clicked on the bar at the top.
+                Intent intent = new Intent(MainActivity.this, About.class);
+                startActivity(intent);
+                return true;
             case R.id.menuGitHub:
                 Toast.makeText(this, "Show Link", Toast.LENGTH_SHORT).show();
         }

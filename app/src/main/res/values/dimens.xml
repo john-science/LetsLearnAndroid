@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="thin_margin">5dp</dimen>
+    <dimen name="thick_margin">10dp</dimen>
+</resources>
