@@ -4,9 +4,6 @@
 
     <item android:id="@+id/menuAbout"
         android:title="@string/about"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/menuGitHub"
-        android:title="@string/github"
-        app:showAsAction="never" />
+        android:icon="@drawable/info_24"
+        app:showAsAction="always" />
 </menu>

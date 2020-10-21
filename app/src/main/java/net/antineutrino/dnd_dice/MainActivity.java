@@ -1,5 +1,6 @@
 package net.antineutrino.dnd_dice;
 import java.util.Locale;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -191,8 +191,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, About.class);
                 startActivity(intent);
                 return true;
-            case R.id.menuGitHub:
-                Toast.makeText(this, "Show Link", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }

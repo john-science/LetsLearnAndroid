@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearAbout0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:cursorVisible="false"
+    android:orientation="vertical"
     tools:context=".About">
 
-    <TextView
-        android:id="@+id/textViewAbout"
+    <LinearLayout
+        android:id="@+id/linearAbout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/thick_margin"
-        android:text="This is a little project just to re-familiarize myself with Android in 2020.\n\nIt is open source, and free to whomever is interested in it." />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_weight="2"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewAbout0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/thick_margin"
+            android:text="@string/about_text0"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearAbout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/thick_margin"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewAbout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/thick_margin"
+            android:text="@string/about_text1"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>

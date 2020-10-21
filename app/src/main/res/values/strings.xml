@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Roleplaying Dice</string>
 
-    <string name="roll">Roll</string><![CDATA[g>
+    <string name="roll">Roll</string><![CDATA[g>]]>
 
-    ]]>
     <string name="d4" translatable="false">D4</string>
     <string name="d6" translatable="false">D6</string>
     <string name="d8" translatable="false">D8</string>``
@@ -62,7 +61,12 @@
     <string name="rolls">rolls</string>
     <string name="about">About</string>
     <string name="github" translatable="false">GitHub</string>
-    <!-- Strings used for fragments for navigation -->
 
     <string name="home">Home</string>
+    <string name="about_text0" translatable="false">This is a little project just to re-familiarize myself with Android in 2020.
+\n\n
+It is open source, and free to whomever is interested in it.</string>
+    <string name="about_text1" translatable="false">The code for this project can be found at:
+\n\n
+https://github.com/theJollySin/DDDice</string>
 </resources>
