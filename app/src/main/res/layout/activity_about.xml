@@ -7,14 +7,14 @@
     android:baselineAligned="false"
     android:cursorVisible="false"
     android:orientation="vertical"
-    tools:context=".About">
+    tools:context=".AboutActivity">
 
     <LinearLayout
         android:id="@+id/linearAbout1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/thick_margin"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:baselineAligned="false"
         android:orientation="vertical">
 
@@ -24,24 +24,6 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/thick_margin"
             android:text="@string/about_text0"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearAbout2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/thick_margin"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textViewAbout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/thick_margin"
-            android:text="@string/about_text1"
             android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

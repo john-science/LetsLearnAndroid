@@ -65,8 +65,7 @@
     <string name="home">Home</string>
     <string name="about_text0" translatable="false">This is a little project just to re-familiarize myself with Android in 2020.
 \n\n
-It is open source, and free to whomever is interested in it.</string>
-    <string name="about_text1" translatable="false">The code for this project can be found at:
+It is open source, and free to whomever is interested in it.
 \n\n
-https://github.com/theJollySin/DDDice</string>
+For those interested, the code can be found <a href="https://github.com/theJollySin/DDDice">here on GitHub</a>.</string>
 </resources>

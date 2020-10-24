@@ -1,19 +1,24 @@
 package net.antineutrino.dnd_dice;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class About extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        TextView t1 = (TextView) findViewById(R.id.textViewAbout0);
+        t1.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override
@@ -27,7 +32,7 @@ public class About extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuHomeFromAbout) {
             // This code will start the new activity when the settings button is clicked on the bar at the top.
-            Intent intent = new Intent(About.this, MainActivity.class);
+            Intent intent = new Intent(AboutActivity.this, MainActivity.class);
             startActivity(intent);
             return true;
         }

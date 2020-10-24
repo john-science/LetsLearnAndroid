@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menuAbout:
                 // This code will start the new activity when the settings button is clicked on the bar at the top.
-                Intent intent = new Intent(MainActivity.this, About.class);
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
                 return true;
         }
