@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>                                                                                                                
 <resources>                                                                                                                                           
     <string name="app_name">Dados de rol</string>
-    <string name="add_prompt">¿Más qué bonificación?</string>
-    <string name="roll">Rodar</string>
-    <string name="rolls">Rollos</string>
+    <string name="add_prompt">¿Además de qué bono?</string>
+    <string name="roll">¡Tira los dados!</string>
+    <string name="rolls">los Rollos</string>
     <string name="multiple_prompt">¿Cuantos dados?</string>
-    <string name="about">Acerca de</string>
-    <string name="home">Principal</string>
+    <string name="about">la Información</string>
+    <string name="home">la portada</string>
 </resources>
