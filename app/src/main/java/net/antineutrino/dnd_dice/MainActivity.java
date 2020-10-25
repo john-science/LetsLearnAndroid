@@ -26,32 +26,6 @@ public class MainActivity extends AppCompatActivity {
     int numDice = 1;
     int bonus = 0;
 
-    /**
-     * Rolls a single N-Sided die.
-     *
-     * @param sides number of sides of the die
-     * @return random die roll (from 1 to sides inclusive)
-     */
-    protected static int rollOneDie(int sides) {
-        return (int) (Math.random() * (sides) + 1);
-    }
-
-    /**
-     * Rolls X N-Sided die.
-     *
-     * @param sides   number of sides of the die
-     * @param numDice number of dice
-     * @return rolls values of several fair dice rolls
-     */
-    protected static int[] rollDice(int sides, int numDice) {
-        int[] rolls = new int[numDice];
-        for (int i = 0; i < rolls.length; i++) {
-            rolls[i] = rollOneDie(sides);
-        }
-
-        return rolls;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         buttonRoll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int[] rolls = rollDice(dieSides, numDice);
+                int[] rolls = RandomRolls.rollDice(dieSides, numDice);
                 int total = bonus;
                 editTextTotal.setText("");
                 editTextDetails.setText("");
