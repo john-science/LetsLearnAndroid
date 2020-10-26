@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">CustomListExample</string>
+    
+    <string-array name="items">
+        <item>Azathoth</item>
+        <item>Cthulu</item>
+        <item>Glaaki</item>
+        <item>Yig</item>
+    </string-array>
+
+    <string-array name="prices">
+        <item>1e26 m</item>
+        <item>100 m</item>
+        <item>30 m</item>
+        <item>3 m</item>
+    </string-array>
+
+
+    <string-array name="descriptions">
+        <item>God Cloud at the Center of the Universe</item>
+        <item>Octopoid with claws on hands and feet and bat wings</item>
+        <item>Slug with metal spines, and eye stalks</item>
+        <item>Serpent with bat wings</item>
+    </string-array>
 </resources>
