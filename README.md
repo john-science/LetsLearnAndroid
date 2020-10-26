@@ -4,7 +4,7 @@ This repo is just a series of little Android apps I'm using to re-learn the Andr
 
 ## Apps
 
-1. [Dungeons & Dragons Dice](RoleplayingDice/README.md)
+1. [Dungeons & Dragons Dice](RoleplayingDice/)
 
 ## The Stack
 
