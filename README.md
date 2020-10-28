@@ -5,6 +5,8 @@ This repo is just a series of little Android apps I'm using to re-learn the Andr
 ## Apps
 
 1. [Dungeons & Dragons Dice](RoleplayingDice/)
+2. [Custom Layouts with a List of the Great Old Ones](CustomListExample/)
+
 
 ## The Stack
 
