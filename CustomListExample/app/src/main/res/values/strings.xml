@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CustomListExample</string>
-    
+
     <string-array name="items">
         <item>Azathoth</item>
         <item>Cthulu</item>
@@ -22,4 +22,6 @@
         <item>Slug with metal spines, and eye stalks</item>
         <item>Serpent with bat wings</item>
     </string-array>
+
+    <string name="image_desc">Awesome Artwork</string>
 </resources>
