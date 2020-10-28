@@ -4,7 +4,7 @@ This repo is just a series of little Android apps I'm using to re-learn the Andr
 
 ## Apps
 
-1. [Roleplaying Dice](RoleplayingDice/) - Calculator-like tool for Dungeons & Dragons players to roll dice
+1. [Roleplaying Dice](RoleplayingDice/) - Calculator-like tool for gamers to roll various kinds of dice
 2. [CustomListExample](CustomListExample/) - Learning to use custom layouts and display images (of Cthulhu)
 
 
