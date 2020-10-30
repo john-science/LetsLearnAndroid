@@ -2,6 +2,8 @@
 
 > This will be a simple list-generating app using SQLite.
 
+This app was created following [this tutorial](https://www.youtube.com/watch?v=hDSVInZ2JCs&list=WL&index=36) by [Shad Sluiter](https://www.youtube.com/channel/UCUSqKFDbRaaWQTaMN3r4Pbg).
+
 
 ## The Stack
 
