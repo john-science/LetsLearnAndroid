@@ -32,11 +32,18 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CustomerModel cust;
+
                 try {
-                    CustomerModel cust = new CustomerModel(-1, edtName.getText().toString(), Integer.parseInt(edtAge.getText().toString()), sw_active.isChecked());
-                    Toast.makeText(MainActivity.this, cust.toString(), Toast.LENGTH_SHORT).show();
+                    cust = new CustomerModel(-1, edtName.getText().toString(), Integer.parseInt(edtAge.getText().toString()), sw_active.isChecked());
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, "Error creating customer", Toast.LENGTH_SHORT).show();
+                    cust = new CustomerModel(-1, "error", 0, false);
+                }
+
+                DAL dal = new DAL(MainActivity.this);
+                boolean success = dal.addOne(cust);
+                if (success) {
+                    Toast.makeText(MainActivity.this, "Successfully inserted into the DB", Toast.LENGTH_SHORT).show();
                 }
             }
         });
