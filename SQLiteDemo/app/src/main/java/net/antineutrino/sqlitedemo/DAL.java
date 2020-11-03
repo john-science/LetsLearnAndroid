@@ -1,6 +1,10 @@
 package net.antineutrino.sqlitedemo;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -43,5 +47,31 @@ public class DAL extends SQLiteOpenHelper {
 
         long insert = db.insert(TABLE, null, cv);
         return insert >= 0;
+    }
+
+    public List<CustomerModel> getAll() {
+        List<CustomerModel> returnList = new ArrayList<>();
+
+        String query = "SELECT * FROM " + TABLE + ";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            // if there are results
+            do {
+                int customerID = cursor.getInt(0);
+                String customerName = cursor.getString(1);
+                int customerAge = cursor.getInt(2);
+                boolean customerActive = cursor.getInt(3) > 0;
+
+                CustomerModel model = new CustomerModel(customerID, customerName, customerAge, customerActive);
+                returnList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
     }
 }

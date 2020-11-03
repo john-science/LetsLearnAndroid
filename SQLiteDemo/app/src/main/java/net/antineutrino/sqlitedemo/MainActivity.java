@@ -1,4 +1,6 @@
 package net.antineutrino.sqlitedemo;
+import java.util.List;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,12 +53,9 @@ public class MainActivity extends AppCompatActivity {
         btn_viewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    CustomerModel cust = new CustomerModel(-1, edtName.getText().toString(), Integer.parseInt(edtAge.getText().toString()), sw_active.isChecked());
-                    Toast.makeText(MainActivity.this, cust.toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, "Error creating customer", Toast.LENGTH_SHORT).show();
-                }
+                DAL dal = new DAL(MainActivity.this);
+                List <CustomerModel> everyone = dal.getAll();
+                Toast.makeText(MainActivity.this, everyone.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
