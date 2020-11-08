@@ -2,6 +2,7 @@ package net.antineutrino.sqlitedemo;
 import java.util.List;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     Switch sw_active;
     ListView lv_customer_list;
 
+    // other class attributes
+    ArrayAdapter <CustomerModel> customerAA;
+    DAL dal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         edtAge = findViewById(R.id.edtAge);
         sw_active = findViewById(R.id.sw_active);
         lv_customer_list = findViewById(R.id.lv_customerList);
+        dal = new DAL(MainActivity.this);
+
+        updateCustomerList();
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,19 +52,21 @@ public class MainActivity extends AppCompatActivity {
 
                 DAL dal = new DAL(MainActivity.this);
                 boolean success = dal.addOne(cust);
-                if (success) {
-                    Toast.makeText(MainActivity.this, "Successfully inserted into the DB", Toast.LENGTH_SHORT).show();
-                }
+                updateCustomerList();
             }
         });
 
         btn_viewAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAL dal = new DAL(MainActivity.this);
-                List <CustomerModel> everyone = dal.getAll();
-                Toast.makeText(MainActivity.this, everyone.toString(), Toast.LENGTH_LONG).show();
+                updateCustomerList();
             }
         });
+    }
+
+    // display the full customer list in the UI
+    private void updateCustomerList() {
+        customerAA = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, dal.getAll());
+        lv_customer_list.setAdapter(customerAA);
     }
 }

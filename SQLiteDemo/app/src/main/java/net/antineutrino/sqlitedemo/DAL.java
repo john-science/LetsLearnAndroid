@@ -22,6 +22,7 @@ public class DAL extends SQLiteOpenHelper {
         super(context, "customer", null, 1);
     }
 
+    // TODO: This creates a new table each time. How do I persist my DB between phone shutdowns?
     // This is going to be called the first time you access a DB object.
     @Override
     public void onCreate(SQLiteDatabase db) {
