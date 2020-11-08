@@ -84,4 +84,33 @@ public class DAL extends SQLiteOpenHelper {
 
         return returnList;
     }
+
+    public List<CustomerModel> getMatching(String search) {
+        List<CustomerModel> returnList = new ArrayList<>();
+
+        String query = "SELECT * FROM " + TABLE + ";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            // if there are results, see if they match
+            do {
+                String customerName = cursor.getString(1);
+
+                if (customerName.toLowerCase().contains(search)) {
+                    int customerID = cursor.getInt(0);
+                    int customerAge = cursor.getInt(2);
+                    boolean customerActive = cursor.getInt(3) > 0;
+
+                    CustomerModel model = new CustomerModel(customerID, customerName, customerAge, customerActive);
+                    returnList.add(model);
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
+    }
 }

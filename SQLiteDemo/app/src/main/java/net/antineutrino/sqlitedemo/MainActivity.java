@@ -1,4 +1,5 @@
 package net.antineutrino.sqlitedemo;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     // references to all of the buttons and controls on the layout
     Button btn_add, btn_viewAll;
-    EditText edtName, edtAge;
+    EditText edtName, edtAge, edtSearch;
     Switch sw_active;
     ListView lv_customer_list;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn_add = findViewById(R.id.btn_add);
         btn_viewAll = findViewById(R.id.btn_viewAll);
+        edtSearch = findViewById(R.id.edtSearch);
         edtName = findViewById(R.id.edtName);
         edtAge = findViewById(R.id.edtAge);
         sw_active = findViewById(R.id.sw_active);
@@ -69,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
                 dal.deleteOne(clickedCustomer);
                 updateCustomerList();
                 Toast.makeText(MainActivity.this, "Deleted: " + clickedCustomer.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        edtSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String search = edtSearch.getText().toString().toLowerCase();
+                customerAA = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, dal.getMatching(search));
+                lv_customer_list.setAdapter(customerAA);
             }
         });
     }
