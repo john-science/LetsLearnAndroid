@@ -1,7 +1,6 @@
 package net.antineutrino.sqlitedemo;
-import java.util.List;
-
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateCustomerList();
+            }
+        });
+
+        lv_customer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CustomerModel clickedCustomer = (CustomerModel) parent.getItemAtPosition(position);
+                dal.deleteOne(clickedCustomer);
+                updateCustomerList();
+                Toast.makeText(MainActivity.this, "Deleted: " + clickedCustomer.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

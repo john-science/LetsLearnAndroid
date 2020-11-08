@@ -1,7 +1,6 @@
 package net.antineutrino.sqlitedemo;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,7 +21,6 @@ public class DAL extends SQLiteOpenHelper {
         super(context, "customer", null, 1);
     }
 
-    // TODO: This creates a new table each time. How do I persist my DB between phone shutdowns?
     // This is going to be called the first time you access a DB object.
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -34,9 +32,7 @@ public class DAL extends SQLiteOpenHelper {
 
     // Called every time the version of your application changes.
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
 
     public boolean addOne(CustomerModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -48,6 +44,19 @@ public class DAL extends SQLiteOpenHelper {
 
         long insert = db.insert(TABLE, null, cv);
         return insert >= 0;
+    }
+
+    public boolean deleteOne(CustomerModel cust) {
+        // if the customer is in the DB, delete it and return true, else return false
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE + " WHERE " + COL_ID + " = " + cust.getId();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<CustomerModel> getAll() {
