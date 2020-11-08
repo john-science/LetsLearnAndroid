@@ -3,6 +3,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -24,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvPlayer1 = findViewById(R.id.text_view_p1);
         tvPlayer2 = findViewById(R.id.text_view_p2);
 
-        for (int r=0; r < 3; r++) {
-            for (int c=0; c < 3; c++) {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
                 int resID = getResources().getIdentifier("btn" + r + c, "id", getPackageName());
                 buttons[r][c] = findViewById(resID);
                 buttons[r][c].setOnClickListener(this);
@@ -72,36 +73,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void player1Wins() {
-
-    }
-
-    private void player2Wins() {
-
-    }
-
-    private void draw() {
-
-    }
-
     private boolean checkForWin() {
         String[][] values = new String[3][3];
 
-        for (int r=0; r < 3; r++) {
-            for (int c=0; c < 3; c++) {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
                 values[r][c] = buttons[r][c].getText().toString();
             }
         }
 
         // check for winning columns
-        for (int r=0; r<3; r++) {
+        for (int r = 0; r < 3; r++) {
             if (values[r][0].equals(values[r][1]) && values[r][0].equals(values[r][2]) && !values[r][0].equals("")) {
                 return true;
             }
         }
 
         // check for winning rows
-        for (int c=0; c<3; c++) {
+        for (int c = 0; c < 3; c++) {
             if (values[0][c].equals(values[1][c]) && values[0][c].equals(values[2][c]) && !values[0][c].equals("")) {
                 return true;
             }
@@ -117,5 +106,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         return false;
+    }
+
+    private void player1Wins() {
+        player1Points++;
+        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        updateScoreboard();
+        resetBoard();
+    }
+
+    private void player2Wins() {
+        player2Points++;
+        Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+        updateScoreboard();
+        resetBoard();
+    }
+
+    private void draw() {
+        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
+        resetBoard();
+    }
+
+    private void updateScoreboard() {
+        tvPlayer1.setText("Player 1: " + player1Points);
+        tvPlayer2.setText("Player 2: " + player2Points);
+    }
+
+    // wipe the board clean, and start fresh
+    private void resetBoard() {
+        roundCount = 0;
+        player1Turn = true;
+
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                buttons[r][c].setText("");
+            }
+        }
     }
 }
