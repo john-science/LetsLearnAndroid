@@ -11,19 +11,19 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/text_view_p1"
+            android:id="@+id/text_view_player"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player 1: 0"
+            android:text="Player: 0"
             android:freezesText="true"
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/text_view_p2"
+            android:id="@+id/text_view_ai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_view_p1"
-            android:text="Player 2: 0"
+            android:layout_below="@+id/text_view_player"
+            android:text="AI: 0"
             android:freezesText="true"
             android:textSize="30sp" />
 

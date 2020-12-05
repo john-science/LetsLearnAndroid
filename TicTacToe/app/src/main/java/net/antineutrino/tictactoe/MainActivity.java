@@ -11,20 +11,23 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button[][] buttons = new Button[3][3];
-    private boolean player1Turn = true;
-    private int player1Points = 0;
-    private int player2Points = 0;
+    private boolean playerTurn = true;
+    private int pointsPlayer = 0;
+    private int pointsAI = 0;
     private int roundCount = 0;
-    private TextView tvPlayer1;
-    private TextView tvPlayer2;
+    private String emptySymbol = "";
+    private String player1Symbol = "X";
+    private String player2Symbol = "O";
+    private TextView tvPlayer;
+    private TextView tvAI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvPlayer1 = findViewById(R.id.text_view_p1);
-        tvPlayer2 = findViewById(R.id.text_view_p2);
+        tvPlayer = findViewById(R.id.text_view_player);
+        tvAI = findViewById(R.id.text_view_ai);
 
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
@@ -46,23 +49,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         // if this button has already been pressed, just move on
-        if (!((Button) v).getText().toString().equals("")) {
+        if (!((Button) v).getText().toString().equals(emptySymbol)) {
             return;
         }
 
         // mark the square
-        if (player1Turn) {
-            ((Button) v).setText("X");
+        if (playerTurn) {
+            ((Button) v).setText(player1Symbol);
         } else {
-            ((Button) v).setText("O");
+            ((Button) v).setText(player2Symbol);
         }
 
         // rev the round count
         roundCount++;
 
+        // parse the board into a 3x3 int map
+        int[][] board = parseBoard();
+
         // check if the game has been won, and handle it if so
-        if (checkForWin()) {
-            if (player1Turn) {
+        if (checkForWin(board)) {
+            if (playerTurn) {
                 player1Wins();
             } else {
                 player2Wins();
@@ -70,39 +76,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (roundCount == 9) {
             draw();
         } else {
-            player1Turn = !player1Turn;
+            playerTurn = !playerTurn;
         }
     }
 
-    private boolean checkForWin() {
-        String[][] values = new String[3][3];
+    private int[][] parseBoard() {
+        int[][] board = new int[3][3];
+        String val;
 
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                values[r][c] = buttons[r][c].getText().toString();
+                val = buttons[r][c].getText().toString();
+                if (val.equals(player1Symbol)) {
+                    board[r][c] = 1;
+                } else if (val.equals(player2Symbol)) {
+                    board[r][c] = 2;
+                }
             }
         }
 
+        return board;
+    }
+
+    private boolean checkForWin(int[][] board) {
         // check for winning columns
         for (int r = 0; r < 3; r++) {
-            if (values[r][0].equals(values[r][1]) && values[r][0].equals(values[r][2]) && !values[r][0].equals("")) {
+            if (board[r][0] != 0 && board[r][0] == board[r][1] && board[r][0] == board[r][2]) {
                 return true;
             }
         }
 
         // check for winning rows
         for (int c = 0; c < 3; c++) {
-            if (values[0][c].equals(values[1][c]) && values[0][c].equals(values[2][c]) && !values[0][c].equals("")) {
+            if (board[0][c] != 0 && board[0][c] == board[1][c] && board[0][c] == board[2][c]) {
                 return true;
             }
         }
 
         // check for winning diagonals
-        if (values[0][0].equals(values[1][1]) && values[0][0].equals(values[2][2]) && !values[0][0].equals("")) {
+        if (board[0][0] != 0 && board[0][0] == board[1][1] && board[0][0] == board[2][2]) {
             return true;
         }
 
-        if (values[2][0].equals(values[1][1]) && values[2][0].equals(values[0][2]) && !values[2][0].equals("")) {
+        if (board[2][0] != 0 && board[2][0] == board[1][1] && board[2][0] == board[0][2]) {
             return true;
         }
 
@@ -110,14 +126,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void player1Wins() {
-        player1Points++;
+        pointsPlayer++;
         Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
         resetBoard();
     }
 
     private void player2Wins() {
-        player2Points++;
+        pointsAI++;
         Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
         resetBoard();
@@ -129,14 +145,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateScoreboard() {
-        tvPlayer1.setText("Player 1: " + player1Points);
-        tvPlayer2.setText("Player 2: " + player2Points);
+        tvPlayer.setText("Player: " + pointsPlayer);
+        tvAI.setText("AI: " + pointsAI);
     }
 
     // wipe the board clean, and start fresh
     private void resetBoard() {
         roundCount = 0;
-        player1Turn = true;
+        playerTurn = true;
 
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
@@ -146,8 +162,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void resetGame() {
-        player1Points = 0;
-        player2Points = 0;
+        pointsPlayer = 0;
+        pointsAI = 0;
         updateScoreboard();
         resetBoard();
     }
@@ -157,9 +173,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
 
         outState.putInt("roundCount", roundCount);
-        outState.putInt("player1Points", player1Points);
-        outState.putInt("player2Points", player2Points);
-        outState.putBoolean("player1Turn", player1Turn);
+        outState.putInt("pointsPlayer", pointsPlayer);
+        outState.putInt("pointsAI", pointsAI);
+        outState.putBoolean("player1Turn", playerTurn);
     }
 
     @Override
@@ -167,8 +183,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onRestoreInstanceState(savedInstanceState);
 
         roundCount = savedInstanceState.getInt("roundCount");
-        player1Points = savedInstanceState.getInt("player1Points");
-        player2Points = savedInstanceState.getInt("player2Points");
-        player1Turn = savedInstanceState.getBoolean("player1Turn");
+        pointsPlayer = savedInstanceState.getInt("pointsPlayer");
+        pointsAI = savedInstanceState.getInt("pointsAI");
+        playerTurn = savedInstanceState.getBoolean("player1Turn");
     }
 }
