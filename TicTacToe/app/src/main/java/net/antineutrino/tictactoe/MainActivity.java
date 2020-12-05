@@ -11,13 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button[][] buttons = new Button[3][3];
-    private boolean playerTurn = true;
     private int pointsPlayer = 0;
     private int pointsAI = 0;
     private int roundCount = 0;
     private String emptySymbol = "";
-    private String player1Symbol = "X";
-    private String player2Symbol = "O";
+    private String playerSymbol = "X";
+    private String aiSymbol = "O";
     private TextView tvPlayer;
     private TextView tvAI;
 
@@ -48,17 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        // TODO: If start or end of game... if the players turn, we're good. If it's the AI's turn, we need to moveAI()
+
         // if this button has already been pressed, just move on
         if (!((Button) v).getText().toString().equals(emptySymbol)) {
             return;
         }
 
         // mark the square
-        if (playerTurn) {
-            ((Button) v).setText(player1Symbol);
-        } else {
-            ((Button) v).setText(player2Symbol);
-        }
+        ((Button) v).setText(playerSymbol);
 
         // rev the round count
         roundCount++;
@@ -68,15 +65,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // check if the game has been won, and handle it if so
         if (checkForWin(board)) {
-            if (playerTurn) {
-                player1Wins();
-            } else {
-                player2Wins();
-            }
+            playerWins();
         } else if (roundCount == 9) {
             draw();
-        } else {
-            playerTurn = !playerTurn;
+        }
+
+        // time for the AI player to move
+        moveAI(board);
+
+        // check if the game has been won, and handle it if so
+        if (checkForWin(board)) {
+            aiWins();
+        } else if (roundCount == 9) {
+            draw();
+        }
+    }
+
+    private void moveAI(int[][] board) {
+        randomMoveAI(board);
+    }
+
+    private void randomMoveAI(int[][] board) {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (board[r][c] == 0) {
+                    board[r][c] = 2;
+                    buttons[r][c].setText(aiSymbol);
+                    roundCount++;
+                    return;
+                }
+            }
         }
     }
 
@@ -87,9 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
                 val = buttons[r][c].getText().toString();
-                if (val.equals(player1Symbol)) {
+                if (val.equals(playerSymbol)) {
                     board[r][c] = 1;
-                } else if (val.equals(player2Symbol)) {
+                } else if (val.equals(aiSymbol)) {
                     board[r][c] = 2;
                 }
             }
@@ -125,14 +143,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private void player1Wins() {
+    private void playerWins() {
         pointsPlayer++;
         Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
         resetBoard();
     }
 
-    private void player2Wins() {
+    private void aiWins() {
         pointsAI++;
         Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
@@ -152,11 +170,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // wipe the board clean, and start fresh
     private void resetBoard() {
         roundCount = 0;
-        playerTurn = true;
 
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                buttons[r][c].setText("");
+                buttons[r][c].setText(emptySymbol);
             }
         }
     }
@@ -175,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putInt("roundCount", roundCount);
         outState.putInt("pointsPlayer", pointsPlayer);
         outState.putInt("pointsAI", pointsAI);
-        outState.putBoolean("player1Turn", playerTurn);
     }
 
     @Override
@@ -185,6 +201,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         roundCount = savedInstanceState.getInt("roundCount");
         pointsPlayer = savedInstanceState.getInt("pointsPlayer");
         pointsAI = savedInstanceState.getInt("pointsAI");
-        playerTurn = savedInstanceState.getBoolean("player1Turn");
     }
 }
