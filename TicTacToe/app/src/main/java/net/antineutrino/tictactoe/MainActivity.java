@@ -1,4 +1,6 @@
 package net.antineutrino.tictactoe;
+import java.util.Random;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private boolean frozenAtWin = false;
     private Button[][] buttons = new Button[3][3];
     private int pointsPlayer = 0;
     private int pointsAI = 0;
@@ -19,6 +22,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String aiSymbol = "O";
     private TextView tvPlayer;
     private TextView tvAI;
+
+    // TODO: Move this out of the class
+    // Implementing Fisher–Yates shuffle
+    static void shuffleArray(int[] ar) {
+        // If running on Java 6 or older, use `new Random()` on RHS here
+        Random rnd = new Random();
+        for (int i = ar.length - 1; i > 0; i--) {
+            int index = rnd.nextInt(i + 1);
+            // Simple swap
+            int a = ar[index];
+            ar[index] = ar[i];
+            ar[i] = a;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        Button btnReset = findViewById(R.id.btnReset);
+        frozenAtWin = false;
+        Button btnReset = findViewById(R.id.btnDifficulty);  // TODO: I don't want a "reset" button. I want a difficulty button.
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        // After each win, we want to pause for a second on the winning board position
+        if (frozenAtWin) {
+            resetBoard();
+            return;
+        }
+
         // TODO: If start or end of game... if the players turn, we're good. If it's the AI's turn, we need to moveAI()
 
         // if this button has already been pressed, just move on
@@ -83,14 +107,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void moveAI(int[][] board) {
         randomMoveAI(board);
+        // TODO: 50/50 chance to hit random or pretty good AI
+        // TODO: pretty good AI
     }
 
     private void randomMoveAI(int[][] board) {
+        // randomize the order the AI will search in
+        int[] rows = {0, 1, 2};
+        shuffleArray(rows);
+        int[] cols = {0, 1, 2};
+        shuffleArray(cols);
+
+        // The AI will hunt in random order and pick the first empty box it finds.
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                if (board[r][c] == 0) {
-                    board[r][c] = 2;
-                    buttons[r][c].setText(aiSymbol);
+                if (board[rows[r]][cols[c]] == 0) {
+                    board[rows[r]][cols[c]] = 2;
+                    buttons[rows[r]][cols[c]].setText(aiSymbol);
                     roundCount++;
                     return;
                 }
@@ -145,16 +178,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void playerWins() {
         pointsPlayer++;
-        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
-        resetBoard();
+        frozenAtWin = true;
     }
 
     private void aiWins() {
         pointsAI++;
-        Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "AI wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
-        resetBoard();
+        frozenAtWin = true;
     }
 
     private void draw() {
@@ -176,11 +209,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttons[r][c].setText(emptySymbol);
             }
         }
+
+        frozenAtWin = false;
     }
 
     private void resetGame() {
         pointsPlayer = 0;
         pointsAI = 0;
+        frozenAtWin = false;
         updateScoreboard();
         resetBoard();
     }
@@ -202,4 +238,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pointsPlayer = savedInstanceState.getInt("pointsPlayer");
         pointsAI = savedInstanceState.getInt("pointsAI");
     }
+
 }
+
