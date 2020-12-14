@@ -1,6 +1,5 @@
 package net.antineutrino.tictactoe;
 import java.util.Random;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -238,6 +237,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pointsPlayer = savedInstanceState.getInt("pointsPlayer");
         pointsAI = savedInstanceState.getInt("pointsAI");
     }
-
 }
-
