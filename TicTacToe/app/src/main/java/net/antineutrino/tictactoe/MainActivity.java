@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private boolean frozenAtWin = false;
+    private boolean lastWinWasPlayer = false;
     private Button[][] buttons = new Button[3][3];
     private int pointsPlayer = 0;
     private int pointsAI = 0;
@@ -70,29 +71,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        // TODO: If start or end of game... if the players turn, we're good. If it's the AI's turn, we need to moveAI()
-
         // if this button has already been pressed, just move on
         if (!((Button) v).getText().toString().equals(emptySymbol)) {
             return;
         }
 
-        // mark the square
-        ((Button) v).setText(playerSymbol);
-
-        // rev the round count
-        roundCount++;
-
         // parse the board into a 3x3 int map
         int[][] board = parseBoard();
 
-        // check if the game has been won, and handle it if so
-        if (checkForWin(board)) {
-            playerWins();
-            return;
-        } else if (roundCount == 9) {
-            draw();
-            return;
+        // The first player in the game will be the one that lost the last game
+        boolean skip = false;
+        if (roundCount == 0 && lastWinWasPlayer) {
+            skip = true;
+        }
+
+        if (!skip) {
+            // mark the square
+            ((Button) v).setText(playerSymbol);
+
+            board = parseBoard();
+
+            // rev the round count
+            roundCount++;
+
+            // check if the game has been won, and handle it if so
+            if (checkForWin(board)) {
+                playerWins();
+                return;
+            } else if (roundCount == 9) {
+                draw();
+                return;
+            }
         }
 
         // time for the AI player to move
@@ -182,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
         frozenAtWin = true;
+        lastWinWasPlayer = true;
     }
 
     private void aiWins() {
@@ -189,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "AI wins!", Toast.LENGTH_SHORT).show();
         updateScoreboard();
         frozenAtWin = true;
+        lastWinWasPlayer = false;
     }
 
     private void draw() {
