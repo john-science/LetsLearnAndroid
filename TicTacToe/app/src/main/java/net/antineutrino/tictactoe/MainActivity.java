@@ -89,8 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // check if the game has been won, and handle it if so
         if (checkForWin(board)) {
             playerWins();
+            return;
         } else if (roundCount == 9) {
             draw();
+            return;
         }
 
         // time for the AI player to move
