@@ -1,5 +1,6 @@
 package net.antineutrino.tictactoe;
 import java.util.Random;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static int maxDifficulty = 2;
     private boolean frozenAtWin = false;
     private boolean lastWinWasPlayer = false;
     private Button[][] buttons = new Button[3][3];
+    private int difficulty = 0;
     private int pointsPlayer = 0;
     private int pointsAI = 0;
     private int roundCount = 0;
@@ -54,13 +57,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         frozenAtWin = false;
-        Button btnReset = findViewById(R.id.btnDifficulty);  // TODO: I don't want a "reset" button. I want a difficulty button.
-        btnReset.setOnClickListener(new View.OnClickListener() {
+        displayDifficulty();
+
+        Button btnDiff = findViewById(R.id.btnDifficulty);
+        btnDiff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetGame();
+                incrementDifficulty();
             }
         });
+    }
+
+    protected void incrementDifficulty() {
+        difficulty += 1;
+        if (difficulty > maxDifficulty) {
+            difficulty = 0;
+        }
+
+        displayDifficulty();
+    }
+
+    protected void displayDifficulty() {
+        Resources res = getResources();
+
+        if (difficulty == 2) {
+            ((Button) findViewById(R.id.btnDifficulty)).setText(res.getString(R.string.hard));
+        } else if (difficulty == 1) {
+            ((Button) findViewById(R.id.btnDifficulty)).setText(res.getString(R.string.medium));
+        } else {
+            ((Button) findViewById(R.id.btnDifficulty)).setText(res.getString(R.string.easy));
+        }
     }
 
     @Override
@@ -116,9 +142,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void moveAI(int[][] board) {
-        randomMoveAI(board);
-        // TODO: 50/50 chance to hit random or pretty good AI
-        // TODO: pretty good AI
+        if (difficulty == 0) {
+            randomMoveAI(board);
+        } else {
+            // TODO: 50/50 chance to hit random or pretty good AI
+            // TODO: pretty good AI
+            randomMoveAI(board);
+        }
     }
 
     private void randomMoveAI(int[][] board) {
@@ -237,17 +267,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt("roundCount", roundCount);
-        outState.putInt("pointsPlayer", pointsPlayer);
+        outState.putInt("difficulty", difficulty);
         outState.putInt("pointsAI", pointsAI);
+        outState.putInt("pointsPlayer", pointsPlayer);
+        outState.putInt("roundCount", roundCount);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        roundCount = savedInstanceState.getInt("roundCount");
-        pointsPlayer = savedInstanceState.getInt("pointsPlayer");
+        difficulty = savedInstanceState.getInt("difficulty");
         pointsAI = savedInstanceState.getInt("pointsAI");
+        pointsPlayer = savedInstanceState.getInt("pointsPlayer");
+        roundCount = savedInstanceState.getInt("roundCount");
     }
 }
