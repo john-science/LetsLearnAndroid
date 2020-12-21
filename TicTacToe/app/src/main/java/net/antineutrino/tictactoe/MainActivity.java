@@ -142,11 +142,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void moveAI(int[][] board) {
-        if (difficulty == 0) {
-            randomMoveAI(board);
+        if (difficulty == 2) {
+            // decent AI
+            betterMoveAI(board);
+        } else if (difficulty == 1) {
+            // 50/50 chance to hit smart or stupid AI
+            Random rnd = new Random();
+            if (rnd.nextInt(2) == 0) {
+                randomMoveAI(board);
+            } else {
+                betterMoveAI(board);
+            }
         } else {
-            // TODO: 50/50 chance to hit random or pretty good AI
-            // TODO: pretty good AI
+            // totally random AI
             randomMoveAI(board);
         }
     }
@@ -168,6 +176,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
             }
+        }
+    }
+
+    private void firstCornerMoveAI(int[][] board) {
+        // randomize the order of the corners
+        int[] rows = {0, 2};
+        shuffleArray(rows);
+        int[] cols = {0, 2};
+        shuffleArray(cols);
+
+        // pick the first random corner, and have the AI go there (NOTE: This assumes the corners are all open)
+        board[rows[0]][cols[0]] = 2;
+        buttons[rows[0]][cols[0]].setText(aiSymbol);
+        roundCount++;
+    }
+
+    private void betterMoveAI(int[][] board) {
+        if (roundCount == 0) {
+            // If it's the first move, grab a corner
+            firstCornerMoveAI(board);
+        } else if (roundCount == 1) {
+            if (board[1][1] == 0) {
+                // If it's the second move, grab the center if you can
+                board[1][1] = 2;
+                buttons[1][1].setText(aiSymbol);
+                roundCount++;
+            } else {
+                // If the center is taken, grab a random corner
+                firstCornerMoveAI(board);
+            }
+        } else {
+            // TODO: check if we can win this turn, if so do it
+            // TODO: check if the player can win this turn, if so block it (if they can win two ways, we only block one)
+            // If neither are true, make a random move
+            randomMoveAI(board);
         }
     }
 
