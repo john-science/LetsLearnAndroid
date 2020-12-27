@@ -193,10 +193,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void betterMoveAI(int[][] board) {
+        Toast.makeText(this, String.valueOf(roundCount), Toast.LENGTH_SHORT).show();
         if (roundCount == 0) {
             // If it's the first move, grab a corner
             firstCornerMoveAI(board);
-        } else if (roundCount == 1) {
+        } else if (roundCount == 1 || roundCount == 2) {
             if (board[1][1] == 0) {
                 // If it's the second move, grab the center if you can
                 board[1][1] = 2;
@@ -207,10 +208,113 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 firstCornerMoveAI(board);
             }
         } else {
-            // TODO: check if we can win this turn, if so do it
-            // TODO: check if the player can win this turn, if so block it (if they can win two ways, we only block one)
-            // If neither are true, make a random move
-            randomMoveAI(board);
+            // check if we can win this turn, if so do it
+            int can = canWin(board, 2);
+            if (can > 0) {
+                int r = can % 3;
+                int c = (can - r) / 3;
+                board[r][c] = 2;
+                buttons[r][c].setText(aiSymbol);
+                roundCount++;
+                return;
+            }
+
+            can = canWin(board, 1);
+            if (can > 0) {
+                // if the player can win, block it
+                int r = can % 3;
+                int c = (can - r) / 3;
+                board[r][c] = 2;
+                buttons[r][c].setText(aiSymbol);
+                roundCount++;
+            } else {
+                // If neither are true, make a random move
+                randomMoveAI(board);
+            }
+        }
+    }
+
+    private int canWin(int[][] board, int player) {
+        // check all columns
+        for (int r = 0; r < 3; r++) {
+            int count = 0;
+            int col = -1;
+            for (int c = 0; c < 3; c++) {
+                if (board[r][c] == player) {
+                    count++;
+                } else if (board[r][c] == 0) {
+                    col = c;
+                    count++;
+                } else {
+                    count = -1;
+                    break;
+                }
+            }
+
+            if (count == 2) {
+                return r + 3 * col;
+            }
+        }
+
+        // check all rows
+        for (int c = 0; c < 3; c++) {
+            int count = 0;
+            int row = -1;
+            for (int r = 0; r < 3; r++) {
+                if (board[r][c] == player) {
+                    count++;
+                } else if (board[r][c] == 0) {
+                    row = c;
+                    count++;
+                } else {
+                    count = -1;
+                    break;
+                }
+            }
+
+            if (count == 2) {
+                return row + 3 * c;
+            }
+        }
+
+        // check diagonal 1
+        int[] rows = {0, 1, 2};
+        int[] cols = {0, 1, 2};
+        int result = canWinLine(board, player, rows, cols);
+        if (result >= 0) {
+            return result;
+        }
+
+        // check diagonal 2
+        rows = new int[]{0, 1, 2};
+        cols = new int[]{2, 1, 0};
+        result = canWinLine(board, player, rows, cols);
+        if (result >= 0) {
+            return result;
+        }
+
+        return -1;
+    }
+
+    private int canWinLine(int[][] board, int player, int[] rows, int[] cols) {
+        int count = 0;
+        int empty_posi = -1;
+        for (int posi = 0; posi < 3; posi++) {
+            if (board[rows[posi]][cols[posi]] == player) {
+                count++;
+            } else if (board[rows[posi]][cols[posi]] == 0) {
+                empty_posi = posi;
+                count++;
+            } else {
+                count = -1;
+                break;
+            }
+        }
+
+        if (count == 2) {
+            return rows[empty_posi] + 3 * cols[empty_posi];
+        } else {
+            return -1;
         }
     }
 
@@ -225,6 +329,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     board[r][c] = 1;
                 } else if (val.equals(aiSymbol)) {
                     board[r][c] = 2;
+                } else {
+                    board[r][c] = 0;
                 }
             }
         }
