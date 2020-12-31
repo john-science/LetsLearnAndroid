@@ -8,6 +8,7 @@ This repo is just a series of little Android apps I'm using to re-learn the Andr
 2. [Custom List Example](CustomListExample/) - Learning to use custom layouts and display images (of Cthulhu)
 3. [SQLite Demo](SQLiteDemo/) - Learning to use Android's built-in SQLite DB tooling
 4. [Tic-Tac-Toe](TicTacToe/) - A simple Tic-Tac-Toe game
+5. [Native C++ App](NativeCPPApp) - A simple example of including C++ code in an Android App.
 
 
 ## The Stack
