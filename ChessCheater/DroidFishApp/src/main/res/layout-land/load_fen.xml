@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:focusable="false" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <org.petero.droidfish.ChessBoardPlay
+                android:id="@+id/loadfen_chessboard"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/loadfen_cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel" />
+
+                <Button
+                    android:id="@+id/loadfen_ok"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@android:string/ok" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

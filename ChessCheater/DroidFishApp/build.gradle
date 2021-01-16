@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "org.petero.droidfish"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 94
+        versionName "1.84"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            ndkBuild {
+                arguments '-j8'
+            }
+        }
+    }
+
+    if(project.hasProperty("RELEASE_STORE_FILE")) {
+        signingConfigs {
+            release {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if(project.hasProperty("RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/cpp/Android.mk')
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    dataBinding.enabled = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.1.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(':CuckooChessEngine')
+    implementation 'com.caverock:androidsvg-aar:1.4'
+}
+
+// Build the ECO database
+task buildEco {
+    def a = "buildSrc/src/main/java/chess/eco.pgn"
+    def b = "DroidFishApp/src/main/assets/eco.dat"
+    chess.EcoBuilder.main2(a, b)
+}
+preBuild.dependsOn buildEco
+
+// Copy Stockfish executables to assets directory
+task copyToAssets(type: Copy, dependsOn: 'externalNativeBuildRelease') {
+    from('build/intermediates/ndkBuild/release/obj/local') {
+        include '*/stockfish'
+        include '*/stockfish_nosimd'
+    }
+    into 'src/main/assets'
+}
+tasks.withType(JavaCompile) {
+    t -> t.dependsOn copyToAssets
+}

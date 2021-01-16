@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+  </head>
+  <body>
+
+<h2>О программе</h2>
+<p>
+  <i>DroidFish</i> это многофункциональный графический шахматный интерфейс, совмещенный с мощным шахматным движком <i>Stockfish</i>.
+</p>
+
+<p>
+  A full manual is available <a href="https://github.com/peterosterlund2/droidfish/blob/master/README.md">here (html)</a> and <a href="https://github.com/peterosterlund2/droidfish/raw/master/doc/droidfish_manual.pdf">here (pdf)</a>.
+</p>
+
+<h3>Особенности игры</h3>
+<ul>
+  <li>Дебютная книга</li>
+  <li>Неограниченные отмены/повторы ходов</li>
+  <li>Копирование/вставка через буфер обмена</li>
+  <li>Режим анализа игры</li>
+  <li>Режим игрок против игрока</li>
+  <li>Режим компьютер против компьютера</li>
+  <li>Настройка позиции</li>
+  <li>Поддержка формата PGN (Portable Game Notation)</li>
+  <li>Установка уровня сложности</li>
+  <li>Поддержка протокола UCI (Universal Chess Interface)</li>
+  <li>Эндшпильные таблицы Гавиоты</li>
+  <li>База данных эндшпилей Syzygy</li>
+</ul>
+
+<h3>Подсказки</h3>
+<ul>
+  <li>
+    Длительно нажмите кнопки режим/влево/вправо для дополнительных команд.
+  </li>
+  <li>
+    При переигрывании партии изменение режима на Редактировать/Переиграть партию позволяет отменять/повторять каждый ход.
+  </li>
+</ul>
+
+<h3>Дебютные книги</h3>
+<p>
+  DroidFish содержит небольшую дебютную книгу. Если вы хотите использовать большие книги, можно настроить DroidFish использовать внешние <i>polyglot</i> или <i>CTG</i> файлы книг:
+</p>
+<ol>
+  <li>
+    Скопировать один или несколько polyglot файлов в директорию <i>DroidFish/book</i> на SD-карте.
+    Polyglot книги должны иметь расширение <i>.bin</i>.
+    <b>Внимание!</b> Файловая система Android чувствительна к заглавным/прописным буквам, по-этому расширение должно быть <i>.bin</i>, не <i>.Bin</i> или <i>.BIN</i>.
+  </li>
+  <li>
+    Скопировать один или несколько CTG файлов в <i>DroidFish/book</i> директорию.
+    CTG книги состоят из трех файлов с расширениями <i>.ctg</i>, <i>.ctb</i> и <i>.cto</i>.
+    Необходимо скопировать все три.
+  </li>
+  <li>
+    Из программного меню активировать функцию <i>Выбрать открываемую книгу</i>.
+  </li>
+  <li>
+    Выберите файл дебютной книги для использования.
+  </li>
+</ol>
+
+<h3>PGN файлы</h3>
+<p>
+  DroidFish может загружать партии из PGN файлов.
+</p>
+<ol>
+  <li>
+    Скопировать один или несколько PGN файлов в директорию <i>DroidFish/pgn</i> на SD карте.
+  </li>
+  <li>
+    Длительным нажатием на доску, активировать меню редактирования и выбрать <i>Загрузить партию из PGN файла</i>.
+  </li>
+  <li>
+    Выбрать файл и партию внутри его, которую вы хотите загрузить.
+  </li>
+</ol>
+<p>
+  Для редактирования шапки партии, например имени игрока, нажать и удерживать список ходов и выбрать <i>Редактировать заголовки</i>. Для редактирования комментариев к ходам, нажать и удерживать список ходов и выбрать <i>Редактировать комментарии</i>.
+</p>
+<p>
+  Для сохранения исправленной партии, нажать и удерживать доску, выбрать <i>Сохранить партию в PGN файл</i>. Выбрать файл для сохранения и затем выбрать место для сохранения партии.
+</p>
+<p>
+  <b>Внимание!</b> Если инсталлирован <a href="http://play.google.com/store/apps/details?id=org.openintents.filemanager">OI File Manager</a>, для загрузки/сохранения партии можно использовать любую директорию.
+</p>
+<p>
+  Для добавления компьютерного анализа к партии, нажать и удерживать Добавить анализ, когда компьютер думает над ходом и выбрать <i>Добавить анализ</i>.
+  Текущая позиция будет добавлена к партии.
+</p>
+<p>
+  В режиме анализа возможно добавление нулевых ходов к партии. Хотя нулевые ходы могут не быть включены в PGN файл и, следовательно, могут не отображаться в других шахматных программах, читающих PGN.
+</p>
+
+<h3>Scid файлы</h3>
+<p>
+  Если у вас установлен <a href="http://play.google.com/store/apps/details?id=org.scid.android">Scid on the go</a>, вы можете использовать фаилы из базы Scid напрямую с DroidFish.
+  Нажмите и удерживайте доску а затем выберите <i>Загрузить партию из Scid файла</i>.
+</p>
+
+<h3>FEN/EPD файлы</h3>
+<p>
+  DroidFish может загрузить позиции из FEN/EPD файлов.
+</p>
+<ol>
+  <li>
+    Скопируйте один или более файлов FEN/EPD в папку <i>DroidFish/epd</i> на SD-карте.
+  </li>
+  <li>
+    Длительно нажмите на шахматной доске и выберите <i>Загрузить позицию из файла</i>.
+  </li>
+  <li>
+    Выберите файл, а затем позицию в файле, которую вы хотите загрузить.
+  </li>
+</ol>
+
+<p>
+  Вы можете также загрузить позиции из внешних программ, таких как <a href="http://play.google.com/store/apps/details?id=com.kgroth.chessocr"> ChessOcr</a> (non-free), которая позволит вам использовать камеру, чтобы сделать снимок шахматной диаграммы и автоматически настроить позицию в DroidFish.
+</p>
+<ol>
+  <li>
+    Длительно нажмите на шахматной доске и выберите <i>Извлечь позицию</i>.
+  </li>
+  <li>
+    Следуйте инструкциям во внешней программе.
+  </li>
+</ol>
+
+<h3>UCI движки</h3>
+<p>
+  DroidFish может использовать сторонние UCI движки.
+</p>
+<ol>
+  <li>
+    Скопировать один или несколько UCI бинарных файлов в директорию <i>DroidFish/uci</i>  на SD карте.
+    <b>Внимание!</b> Бинарные файлы должны быть совместимыми с Android.
+  </li>
+  <li>
+    В меню программы выберите <i>Управление шахматными движками</i> и <i>Выбрать движок</i> и выберите движок для использования.
+  </li>
+</ol>
+
+<h3>UCI движки на удаленном сервере</h3>
+<p>
+  DroidFish может использовать UCI движки, которые работают на удаленном сервере.
+</p>
+<ol>
+  <li>
+    Установите программное обеспечение сервера сетевых шахмат на удаленном компьютере.
+    <ol>
+      <li>
+        Для windows установите программное обеспечение сервера с <a href="http://hem.bredband.net/petero2b/droidfish/index.html">DroidFish</a> страницы.
+      </li>
+      <li>
+        Для linux можно использовать <tt>mini-inetd</tt> из пакета <tt>tcputils</tt>.
+      </li>
+    </ol>
+  </li>
+  <li>
+    В меню программы выберите пункт <i>Управление шахматными движками</i>, создайте новый сетевой движок, введите имя хоста и номер порта для автозапуска движка.
+  </li>
+  <li>
+    В меню программы выберите <i>Управление шахматными движками</i> и <i>Выбрать движок</i> и выберите движок для использования.
+  </li>
+</ol>
+
+<h3>Эндшпильные таблицы Гавиоты</h3>
+<p>
+  Для использования <a href="http//sites.google.com/site/gaviotachessengine/Home/endgame-tablebases-1">Эндшпильных таблиц Гавиоты</a>:
+</p>
+<ol>
+  <li>
+    Скопировать .gtb.cp4 файлы в папку <i>DroidFish/gtb</i> на SD карте.
+  </li>
+  <li>
+    Использовать экран <i>Эндшпильные базы</i> для контроля используемой таблицы.
+  </li>
+</ol>
+
+<h3>База данных эндшпилей Syzygy</h3>
+<p>
+  Для использования <a href="https://www.chessprogramming.org/Syzygy_Bases">базы данных эндшпилей Syzygy</a>:
+</p>
+<ol>
+  <li>
+    Скопируйте .rtbw и опционально .rtbz файлы в папку <i>DroidFish/rtb</i> на SD карте памяти.
+  </li>
+  <li>
+    Используйте экран <i>Эндшпильные базы</i> для контроля используемой базы данных.
+  </li>
+</ol>
+
+<h3>Лицензия</h3>
+<p>
+  <a href="http://www.gnu.org/licenses/gpl.html">GNU GPL v3</a>.
+
+  Исходный код доступен на <a href="https://github.com/peterosterlund2/droidfish">GitHub</a>.
+</p>
+
+<h3>Разработчики</h3>
+<ul>
+  <li>
+    <i>DroidFish</i> разработан Peter Österlund.
+  </li>
+  <li>
+    <i>Stockfish</i> разработан Tord Romstad, Marco Costalba, Gary Linscott и Joona Kiiski.
+  </li>
+  <li>
+    Улучшение пользовательского интерфейса - Aaro Korhonen.
+  </li>
+  <li>
+    Эндшпильные таблицы Гавиоты - Probing Code API, Copyright © 2010 Miguel A. Ballicora.
+    <ul>
+      <li>
+        LZMA сжатие - Igor Pavlov.
+      </li>
+      <li>
+        ZLIB сжатие, Copyright © 1995-2005 Jean-loup Gailly и Mark Adler.
+      </li>
+      <li>
+        LZF сжатие, Copyright © 2000-2007 Marc Alexander Lehmann.
+      </li>
+    </ul>
+  </li>
+  <li>
+    SVG читатель из <a href="http://bigbadaboom.github.io/androidsvg/">androidsvg</a> проекта.
+  </li>
+  <li>
+    Шахматные фигуры взяты с проекта <a href="http://www.pychess.org">PyChess</a>.
+  </li>
+  <li>
+    Палитра цветов, Copyright © 2010 Daniel Nilsson and Copyright © 2011 Sergey Margaritov.
+  </li>
+  <li>
+    Код интерфейса открытого шахматного движка от Gerhard Kalab, <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>.
+  </li>
+  <li>
+    Код баз данных Syzygy, Copyright © 2011-2013 Ronald de Man.
+  </li>
+  <li>
+    Библиотека <a href="https://github.com/worker8/TourGuide">TourGuide</a>, Copyright © 2015 Tan Jun Rong.
+  </li>
+  <li>
+    Библиотека <a href="https://github.com/Tesla-Redux/android-floating-action-button">плавающей кнопки действий</a>, Copyright © 2014 str4d and Jerzy Chalupski.
+  </li>
+  <li>
+    <a href="https://github.com/google/cpu_features">cpu_features</a> library, Copyright © 2017 Google Inc., <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>.
+  </li>
+</ul>
+
+<h3>Переводы</h3>
+<p>
+  Переводы управляются <a href="http://crowdin.net/project/droidfish-android-chess-app">crowdin.net</a>.
+</p>
+<ul>
+  <li>
+    Перевод на немецкий язык - Uwe Walschus.
+  </li>
+  <li>
+    Перевод на испанский язык - Amador Cuesta.
+  </li>
+  <li>
+    Перевод на русский язык - SWEN и dfuk (<a href="http://allblackberry.ru">allBlackBerry</a>).
+  </li>
+  <li>
+    Перевод на португальский язык - C. R. Zamana.
+  </li>
+  <li>
+    Перевод на французский язык - Eric Weibel (Thanvillé).
+  </li>
+  <li>
+    Перевод на итальянский язык - Michele Carfora (suessola).
+  </li>
+  <li>
+    Перевод на голландский язык - David Pront.
+  </li>
+  <li>
+    Перевод на польский язык - Rafał Smyka.
+  </li>
+  <li>
+    Перевод на украинский язык - Mix Gerder и Toru Hasegawa.
+  </li>
+  <li>
+    Перевод на белорусский язык - Mix Gerder.
+  </li>
+  <li>
+    Перевод на корейский язык - Hyobeom Ahn.
+  </li>
+  <li>
+    Перевод на турецкий язык - Emrullah Ertürk.
+  </li>
+</ul>
+
+  </body>
+</html>

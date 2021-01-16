@@ -1,0 +1,1 @@
+include ':DroidFishApp', ':CuckooChessEngine', ':CuckooChess', ':EngineServer'

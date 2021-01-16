@@ -1,0 +1,296 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+  </head>
+  <body>
+
+<h2>À propos</h2>
+<p>
+  <i>DroidFish</i> est une interface graphique d'échecs riche en fonctionnalités, associée au très fort module <i>Stockfish</i>.
+</p>
+
+<p>
+  A full manual is available <a href="https://github.com/peterosterlund2/droidfish/blob/master/README.md">here (html)</a> and <a href="https://github.com/peterosterlund2/droidfish/raw/master/doc/droidfish_manual.pdf">here (pdf)</a>.
+</p>
+
+<h3>Fonctionnalités</h3>
+<ul>
+  <li>Livre d'ouverture</li>
+  <li>Reprise des coups illimitée</li>
+  <li>Copier/coller depuis/vers le presse-papier</li>
+  <li>Mode analyse</li>
+  <li>Mode deux joueurs</li>
+  <li>Mode ordinateur vs ordinateur</li>
+  <li>Configuration de positions</li>
+  <li>Support complet des PGN</li>
+  <li>Niveau de jeu réglable</li>
+  <li>Modules UCI tiers</li>
+  <li>Tables de finales Gaviota</li>
+  <li>Tables de finales Syzygy</li>
+</ul>
+
+<h3>Conseils</h3>
+<ul>
+  <li>
+    Faites un appui long sur les boutons mode/gauche/droite pour d'avantage de commandes.
+  </li>
+  <li>
+    Lors de la navigation dans une partie, mettre le mode <i>Modifier/rejouer la partie</i> vous permet la reprise des demi-coups.
+  </li>
+</ul>
+
+<h3>Livres d'ouverture</h3>
+<p>
+  DroidFish inclut un petit livre d'ouverture. Pour en utiliser un plus complet, vous pouvez configurer DroidFish pour utiliser des livres externes <i>polyglot</i> ou <i>CTG</i>:
+</p>
+<ol>
+  <li>
+    Copiez un ou plusieurs livres polyglot dans le répertoire <i>DroidFish/book</i> de la carte SD.
+    Les livres polyglot doivent avoir l'extension de fichier <i>.bin</i>.
+    <b>Note!</b> La gestion des fichiers par Android est sensible aux majuscules, d'où l'extension qui ne doit être ni <i>.Bin</i> ni <i>.BIN</i>, mais <i>.bin</i>.
+  </li>
+  <li>
+    Copiez un ou plusieurs fichiers CTG dans le répertoire <i>DroidFish/book</i>.
+    Un livre CTG est composé de trois fichiers dont les extensions sont <i>.ctg</i>, <i>.ctb</i> et <i>.cto</i>.
+    Vous devez copier ces trois fichiers.
+  </li>
+  <li>
+    A partir de menu du programme, activez la fonction <i>Sélectionner le livre d'ouverture</i>.
+  </li>
+  <li>
+    Sélectionnez le livre d'ouverture que vous voulez utiliser.
+  </li>
+</ol>
+
+<h3>Fichiers PGN</h3>
+<p>
+  DroidFish peut charger des parties depuis des fichiers PGN.
+</p>
+<ol>
+  <li>
+    Copiez un ou plusieurs fichiers PGN dans le répertoire <i>DroidFish/pgn</i> de la carte SD.
+  </li>
+  <li>
+    Faites un appui long sur l'échiquier et sélectionnez <i>Charger une partie PGN</i>.
+  </li>
+  <li>
+    Sélectionnez le fichier, puis la partie à charger.
+  </li>
+</ol>
+<p>
+  Pour modifier l'en-tête de la partie, tels que les noms des joueurs, faites un appui long sur la liste des coups et sélectionnez <i>Modifier l'en-tête</i>. Pour modifier les commentaires d'un coup, faites un appui long sur ce coup et sélectionnez <i>Modifier les commentaires</i>.
+</p>
+<p>
+  Pour sauvegarder ou modifier une partie, faites un appui long sur l'échiquier et sélectionnez <i>Sauvegarder la partie au format PGN</i>. Sélectionnez le fichier à sauvegarder ainsi que son emplacement.
+</p>
+<p>
+  <b>Note!</b> Si l'application <a href="http://play.google.com/store/apps/details?id=org.openintents.filemanager">OI File Manager</a> est installée, n'importe quel répertoire pourra être utilisé pour charger/sauvegarder des parties.
+</p>
+<p>
+  Pour ajouter l'analyse de l'ordinateur aux variantes de la partie, faites un appui long sur les informations d'analyse quand l'ordinateur réfléchit, et sélectionnez <i>Ajouter l'analyse</i>.
+  La variation principale est ajoutée à la liste des coups de la partie.
+</p>
+<p>
+  En mode analyse, il est possible d'ajouter un coup nul. Sachez cependant que les coups nuls ne sont pas inclus dans le standard PGN et pourraient de ce fait ne pas fonctionner avec tous les lecteurs PGN.
+</p>
+
+<h3>Fichiers scid</h3>
+<p>
+  Si vous avez <a href="http://play.google.com/store/apps/details?id=org.scid.android">Scid on the go</a> installé, vous pouvez lire des données Scid directement depuis DroidFish.
+  Faites un appui long sur l'échiquier et sélectionnez <i>Charger une partie Scid</i>.
+</p>
+
+<h3>Fichiers FEN/EPD</h3>
+<p>
+  DroidFish peut charger des positions à partir de fichiers FEN/EPD.
+</p>
+<ol>
+  <li>
+    Copiez un ou plusieurs fichiers FEN/EPD dans le répertoire <i>DroidFish/epd</i> de la carte SD.
+  </li>
+  <li>
+    Faites un appui long sur l'échiquier et sélectionnez <i>Charger une position depuis un fichier</i>.
+  </li>
+  <li>
+    Sélectionnez le fichier, puis la position dans celui-ci.
+  </li>
+</ol>
+
+<p>
+  Vous pouvez également charger des positions à partir de programmes tiers, tels que <a href="http://play.google.com/store/apps/details?id=com.kgroth.chessocr">ChessOcr</a> (payant), qui permet de prendre une photo d'un diagramme d'échecs et de le retranscrire automatiquement dans DroidFish.
+</p>
+<ol>
+  <li>
+    Faites un appui long sur l'échiquier et sélectionnez <i>Récupérer la position</i>.
+  </li>
+  <li>
+    Suivez les instructions du programme tiers.
+  </li>
+</ol>
+
+<h3>Modules UCI</h3>
+<p>
+  DroidFish peut exploiter les modules UCI tiers.
+</p>
+<ol>
+  <li>
+    Copiez un ou plusieurs fichiers binaires des modules UCI dans le répertoire <i>DroidFish/uci</i> de la carte SD. <b>Note!</b> Les fichiers binaires doivent être compilés pour Android.
+  </li>
+  <li>
+    Depuis le menu du programme, choisissez <i>Gérer les modules d'échecs</i> et <i>Sélectionner les modules d'échecs</i> et sélectionnez le module à utiliser.
+  </li>
+</ol>
+
+<h3>Modules UCI depuis un serveur distant</h3>
+<p>
+  DroidFish peut utiliser des modules UCI fonctionnant sur un serveur distant.
+</p>
+<ol>
+  <li>
+    Installez un programme d'échecs en réseau sur l'ordinateur distant.
+    <ol>
+      <li>
+        Pour Windows, installez un programme faisant serveur depuis la page <a href="http://hem.bredband.net/petero2b/droidfish/index.html">DroidFish</a>.
+      </li>
+      <li>
+        Pour Linux, <tt>mini-inetd</tt> depuis le paquet <tt>tcputils</tt> peut être utilisé.
+      </li>
+    </ol>
+  </li>
+  <li>
+    Sélectionnez <i>Gérer les modules d'échecs</i> dans le menu du programme, créez un nouveau module réseau, et entrez le nom de l'hôte ainsi que le numéro du port pour le module distant.
+  </li>
+  <li>
+    Depuis le menu du programme, choisissez <i>Gérer les modules d'échecs</i> et <i>Sélectionner les modules d'échecs</i> et sélectionnez le module à utiliser.
+  </li>
+</ol>
+
+<h3>Tables de finales Gaviota</h3>
+<p>
+  Pour utiliser les <a href="http://sites.google.com/site/gaviotachessengine/Home/endgame-tablebases-1">tables de finales Gaviota</a>:
+</p>
+<ol>
+  <li>
+    Copiez les fichiers .gtb.cp4 dans le répertoire <i>DroidFish/gtb</i> de la carte SD.
+  </li>
+  <li>
+    Utilisez le menu des préférences des <i>Tables de données de finales</i> pour en définir les paramètres d'utilisation.
+  </li>
+</ol>
+
+<h3>Tables de finales Syzygy</h3>
+<p>
+  Pour utiliser les <a href="https://www.chessprogramming.org/Syzygy_Bases">tables de finales Syzygy</a>:
+</p>
+<ol>
+  <li>
+    Copiez .rtbw et éventuellement les fichiers .rtbz dans le répertoire <i>DroidFish/rtb</i> de la carte SD.
+  </li>
+  <li>
+    Utilisez le menu des préférences des <i>Tables de données de finales</i> pour en définir les paramètres d'utilisation.
+  </li>
+</ol>
+
+<h3>Licence</h3>
+<p>
+  <a href="http://www.gnu.org/licenses/gpl.html">GNU GPL v3</a>.
+
+  Le code source est disponible sur <a href="https://github.com/peterosterlund2/droidfish">GitHub</a>.
+</p>
+
+<h3>Développeurs</h3>
+<ul>
+  <li>
+    <i>DroidFish</i> est développé par Peter Österlund.
+  </li>
+  <li>
+    <i>StockFish</i> est développé par Tord Romstad, Marco Costalba, Gary Linscott et Joona Kiiski.
+  </li>
+  <li>
+    Améliorations de l'interface utilisateur par Aaro Korhonen.
+  </li>
+  <li>
+    Code API des tables de données Gaviota, Copyright © 2010 Miguel A. Ballicora.
+    <ul>
+      <li>
+        Compression LZMA par Igor Pavlov.
+      </li>
+      <li>
+        Compression ZLIB, Copyright © 1995-2005 Jean-loup Gailly et Mark Adler.
+      </li>
+      <li>
+        Compression LZF, Copyright © 2000-2007 Marc Alexander Lehmann.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Lecteur SVG du projet <a href="http://bigbadaboom.github.io/androidsvg/">androidsvg</a>.
+  </li>
+  <li>
+    Pièces d'échecs du projet <a href="http://www.pychess.org">PyChess</a>.
+  </li>
+  <li>
+    Sélecteur de couleurs, Copyright © 2010 Daniel Nilsson et Copyright © 2011 Sergey Margaritov.
+  </li>
+  <li>
+    Code ouvert de l'interface du module d'échecs par Gerhard Kalab, <a href="http://www.apache.org/licenses/LICENSE-2.0">licence Apache 2.0</a>.
+  </li>
+  <li>
+    Code d'exploration des tables de données Syzygy, Copyright © 2011-2013 Ronald de Man.
+  </li>
+  <li>
+    Bibliothèque <a href="https://github.com/worker8/TourGuide">TourGuide</a>, Copyright © 2015 Tan Jun Rong.
+  </li>
+  <li>
+    Bibliothèque du <a href="https://github.com/Tesla-Redux/android-floating-action-button">Bouton d'action flottant</a>, Copyright © 2014 str4d et Jerzy Chalupski.
+  </li>
+  <li>
+    <a href="https://github.com/google/cpu_features">cpu_features</a> library, Copyright © 2017 Google Inc., <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>.
+  </li>
+</ul>
+
+<h3>Traductions</h3>
+<p>
+  Les traductions sont gérées par <a href="http://crowdin.net/project/droidfish-android-chess-app">crowdin.net</a>.
+</p>
+<ul>
+  <li>
+    Traduction allemande par Uwe Walschus.
+  </li>
+  <li>
+    Traduction espagnole par Amador Cuesta.
+  </li>
+  <li>
+    Traduction russe par SWEN и dfuk (allBlackBerry).
+  </li>
+  <li>
+    Traduction portugaise par C. R. Zamana.
+  </li>
+  <li>
+    Traduction française par Eric Weibel (Thanvillé).
+  </li>
+  <li>
+    Traduction italienne par Michele Carfora (suessola).
+  </li>
+  <li>
+    Traduction néerlandaise par David Pront.
+  </li>
+  <li>
+    Traduction polonaise par Rafał Smyka.
+  </li>
+  <li>
+    Traduction ukrainienne par Mix Gerder et Toru Hasegawa.
+  </li>
+  <li>
+    Traduction biélorusse par Mix Gerder.
+  </li>
+  <li>
+    Traduction coréenne par Hyobeom Ahn.
+  </li>
+  <li>
+    Traduction turque par Emrullah Ertürk.
+  </li>
+</ul>
+
+  </body>
+</html>
