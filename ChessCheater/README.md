@@ -13,6 +13,7 @@ The tricky part will be how to diseminate information about this app to the hone
 a cheater asks for tools on forums, honest players can direct them here. The social engineering will definitely be the
 hardest part of this app.
 
+![ChessCheater screenshot](../docs/chess_cheater.png)
 
 ## DroidFish Rocks
 

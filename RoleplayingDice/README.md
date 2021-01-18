@@ -4,6 +4,8 @@
 
 The whole goal of this app is to re-familiarize myself with Android as it stands in 2020. And it's a nice chance to play with Java v11.
 
+![example screenshot](../docs/roleplaying_dice.png)
+
 
 ## The Stack
 

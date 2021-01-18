@@ -2,6 +2,8 @@
 
 This app was created following [Bill Butterfield's](https://www.youtube.com/channel/UCTfCl-a8_6aKT_Mdd4HkaUw) excellent tutorial [here](https://www.youtube.com/watch?v=rdGpT1pIJlw).
 
+![example screenshot](../docs/custom_list_example.png)
+
 
 ## Goals
 

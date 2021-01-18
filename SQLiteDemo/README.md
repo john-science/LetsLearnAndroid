@@ -4,6 +4,8 @@
 
 This app was created following [this tutorial](https://www.youtube.com/watch?v=hDSVInZ2JCs&list=WL&index=36) by [Shad Sluiter](https://www.youtube.com/channel/UCUSqKFDbRaaWQTaMN3r4Pbg).
 
+![example screenshot](../docs/sqlite_demo.png)
+
 
 ## The Stack
 
@@ -14,4 +16,3 @@ Here's the stack I used for this little experiment:
 * Java v11.0.8
 * Gradle v6.1.1
 * SQLite vXXX
-
