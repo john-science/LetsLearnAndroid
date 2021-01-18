@@ -2,6 +2,8 @@
 
 This app was created following [this tutorial](https://www.youtube.com/watch?v=apDL78MFR3o&list=PLrnPJCHvNZuA0ykzsHIdQUC5yKxArSM2V), then I made a bunch of tweaks and added an AI to play against.
 
+![Tic Tac Toe screenshot](../docs/tic_tac_toe.png)
+
 
 ## The Stack
 
@@ -12,4 +14,3 @@ Here's the stack I used for this little experiment:
 * Java v11.0.8
 * Gradle v6.1.1
 * SQLite vXXX
-
