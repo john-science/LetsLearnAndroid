@@ -1,28 +1,9 @@
-/*
-    CuckooChess - A java chess program.
-    Copyright (C) 2011  Peter Österlund, peterosterlund2@gmail.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 package chess;
-
 import chess.TranspositionTable.TTEntry;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+
 
 public class Search {
     final static int plyScale = 8; // Fractional ply resolution
@@ -186,7 +167,6 @@ public class Search {
     final public Move iterativeDeepening(MoveGen.MoveList scMovesIn,
             int maxDepth, long initialMaxNodes, boolean verbose) {
         tStart = System.currentTimeMillis();
-//        log = TreeLogger.getWriter("/home/petero/treelog.dmp", pos);
         totalNodes = 0;
         if (scMovesIn.size <= 0)
             return null; // No moves to search
@@ -263,11 +243,7 @@ public class Search {
                             lmrS = plyScale;
                     }
                 }
-/*                long nodes0 = nodes;
-                long qNodes0 = qNodes;
-                System.out.printf("%2d %5s %5d %5d %6s %6s ",
-                        mi, "-", alpha, beta, "-", "-");
-                System.out.printf("%-6s...\n", TextIO.moveToUCIString(m)); */
+
                 pos.makeMove(m, ui);
                 nodes++;
                 totalNodes++;
@@ -822,15 +798,6 @@ public class Search {
                 totalNodes++;
                 nodesToGo--;
                 sti.currentMove = m;
-/*              long nodes0 = nodes;
-                long qNodes0 = qNodes;
-                if ((ply < 3) && (newDepth > plyScale)) {
-                    System.out.printf("%2d %5s %5d %5d %6s %6s ",
-                            mi, "-", alpha, beta, "-", "-");
-                    for (int i = 0; i < ply; i++)
-                        System.out.printf("      ");
-                    System.out.printf("%-6s...\n", TextIO.moveToUCIString(m));
-                } */
                 sti.lmr = lmr;
                 score = -negaScout(-b, -alpha, ply + 1, newDepth, newCaptureSquare, givesCheck);
                 if (((lmr > 0) && (score > alpha)) ||
@@ -839,13 +806,6 @@ public class Search {
                     newDepth += lmr;
                     score = -negaScout(-beta, -alpha, ply + 1, newDepth, newCaptureSquare, givesCheck);
                 }
-/*              if (ply <= 3) {
-                    System.out.printf("%2d %5d %5d %5d %6d %6d ",
-                            mi, score, alpha, beta, nodes-nodes0, qNodes-qNodes0);
-                    for (int i = 0; i < ply; i++)
-                        System.out.printf("      ");
-                    System.out.printf("%-6s\n", TextIO.moveToUCIString(m));
-                }*/
                 posHashListSize--;
                 pos.unMakeMove(m, ui);
             }
@@ -919,7 +879,7 @@ public class Search {
         double offs = (17 - 50 * s) / 3;
         double effPly = ply * Evaluate.interpolate(pos.wMtrl + pos.bMtrl, 0, 30, Evaluate.qV * 4, 100) * 1e-2;
         double t = effPly + offs;
-        double p = 1/(1+Math.exp(t)); // Probability to "see" move
+        double p = 1 / (1 + Math.exp(t)); // Probability to "see" move
         boolean easyMove = ((pos.getPiece(m.to) != Piece.EMPTY) ||
                             (ply < 2) || (searchTreeInfo[ply-2].currentMove.to == m.from));
         if (easyMove)
