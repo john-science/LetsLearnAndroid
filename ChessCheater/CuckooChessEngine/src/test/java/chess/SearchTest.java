@@ -1,35 +1,16 @@
-/*
-    CuckooChess - A java chess program.
-    Copyright (C) 2011  Peter Österlund, peterosterlund2@gmail.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 package chess;
-
 import chess.Search.StopSearch;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 public class SearchTest {
     private static final long[] nullHist = new long[200];
     private static TranspositionTable tt = new TranspositionTable(19);
     private static History ht = new History();
-    
+
     public SearchTest() {
     }
 
@@ -53,14 +34,14 @@ public class SearchTest {
         assertEquals(mate0 - 2, score);     // depth 2 is enough to find mate in 1
         int score2 = idSearch(sc, 2).score;
         assertEquals(score, score2);
-        
+
         pos = TextIO.readFEN("8/1P6/k7/2K5/8/8/8/8 w - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         score = sc.negaScout(-mate0, mate0, 0, 4*plyScale, -1, MoveGen.inCheck(pos));
         assertEquals(mate0 - 4, score);     // depth 4 is enough to find mate in 2
         score2 = idSearch(sc, 4).score;
         assertEquals(score, score2);
-        
+
         pos = TextIO.readFEN("8/5P1k/5K2/8/8/8/8/8 w - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         score = sc.negaScout(-mate0, mate0, 0, 5*plyScale, -1, MoveGen.inCheck(pos));
@@ -101,7 +82,7 @@ public class SearchTest {
         final int plyScale = Search.plyScale;
         int score = sc.negaScout(-mate0, mate0, 0, 2*plyScale, -1, MoveGen.inCheck(pos));
         assertEquals(matedInOne, score);
-        
+
         pos = TextIO.readFEN("8/1R2k3/R7/8/8/8/8/1K6 b - - 99 80");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
@@ -113,7 +94,7 @@ public class SearchTest {
         sc.maxTimeMillis = -1;
         score = sc.negaScout(-mate0, mate0, 0, 2*plyScale, -1, MoveGen.inCheck(pos));
         assertEquals(matedInOne, score);     // No draw
-        
+
         pos = TextIO.readFEN("8/1R2k3/R7/8/8/8/8/1K6 b - - 99 80");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
@@ -125,19 +106,19 @@ public class SearchTest {
         sc.maxTimeMillis = -1;
         score = idSearch(sc, 2).score;
         assertEquals(mateInOne, score); // Black forgot to claim draw. Now it's too late.
-        
+
         pos = TextIO.readFEN("8/7k/1R6/R7/8/7P/8/1K6 w - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
         score = idSearch(sc, 3).score;
         assertEquals(mateInTwo, score);
-        
+
         pos = TextIO.readFEN("8/7k/1R6/R7/8/7P/8/1K6 w - - 98 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
         score = idSearch(sc, 6).score;
         assertEquals(mateInThree, score);   // Need an extra pawn move to avoid 50-move rule
-        
+
         pos = TextIO.readFEN("8/7k/1R6/R7/8/7P/8/1K6 w - - 125 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
@@ -155,7 +136,7 @@ public class SearchTest {
         final int plyScale = Search.plyScale;
         int score = sc.negaScout(-mate0, mate0, 0, 3*plyScale, -1, MoveGen.inCheck(pos));
         assertEquals(0, score);
-        
+
         pos = TextIO.readFEN("7k/5RR1/8/8/8/8/q3q3/2K5 w - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
@@ -173,7 +154,7 @@ public class SearchTest {
         sc.maxTimeMillis = -1;
         score = sc.negaScout(-mate0, mate0, 0, 3*plyScale, -1, MoveGen.inCheck(pos));
         assertTrue(score < 0);
-        
+
         pos = TextIO.readFEN("qn6/qn4k1/pp3R2/5R2/8/8/8/K7 w - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         sc.maxTimeMillis = -1;
@@ -275,7 +256,7 @@ public class SearchTest {
         assertEquals(-bV, getSEE(sc, TextIO.stringToMove(pos, "Bf4")));
         assertEquals(-bV, getSEE(sc, TextIO.stringToMove(pos, "Bh6")));
         assertEquals(-rV, getSEE(sc, TextIO.stringToMove(pos, "Ra5")));
-        assertEquals(-rV, getSEE(sc, TextIO.stringToMove(pos, "Ra6")));        
+        assertEquals(-rV, getSEE(sc, TextIO.stringToMove(pos, "Ra6")));
 
         pos.setWhiteMove(false);
         sc = new Search(pos, nullHist, 0, tt, ht);
@@ -305,13 +286,13 @@ public class SearchTest {
         // 0 1 0 1 0 3 0 3 0 4 1 4 5
         assertEquals(0, getSEE(sc, TextIO.stringToMove(pos, "exd4")));
         assertEquals(pV, getSEE(sc, TextIO.stringToMove(pos, "cxb4")));
-        
+
         pos.setPiece(TextIO.getSquare("b5"), Piece.EMPTY);  // Remove white knight
         sc = new Search(pos, nullHist, 0, tt, ht);
         // 1 1 1 1 3 3 3 3 5 5 5
         // 1 0 1 0 3 0 3 0 5 0 5
         assertEquals(pV, getSEE(sc, TextIO.stringToMove(pos, "exd4")));
-        
+
         pos.setPiece(TextIO.getSquare("b2"), Piece.WQUEEN);  // Restore white queen
         sc = new Search(pos, nullHist, 0, tt, ht);
         // 1 1 1 1 3 3 3 3 5 5 5 9 9
@@ -322,28 +303,28 @@ public class SearchTest {
         pos.setPiece(TextIO.getSquare("c6"), Piece.EMPTY);  // Remove black knight
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(-pV, getSEE(sc, TextIO.stringToMove(pos, "a5")));
-        
+
         // Test EP capture
         pos = TextIO.readFEN("2b3k1/1p3ppp/8/pP6/8/2PB4/5PPP/6K1 w - a6 0 2");
         sc = new Search(pos, nullHist, 0, tt, ht);
         // 1 1 1 3
         // 0 1 0 3
         assertEquals(0, getSEE(sc, TextIO.stringToMove(pos, "bxa6")));
-        
+
         pos.setPiece(TextIO.getSquare("b7"), Piece.EMPTY);  // Remove black pawn
         sc = new Search(pos, nullHist, 0, tt, ht);
         // 1 1 3
         // 1 0 3
         assertEquals(pV, getSEE(sc, TextIO.stringToMove(pos, "bxa6")));
 
-        
+
         // Test king capture
         pos = TextIO.readFEN("8/8/8/4k3/r3P3/4K3/8/4R3 b - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         // 1 5 99
         // 1 0 99
         assertEquals(pV, getSEE(sc, TextIO.stringToMove(pos, "Rxe4+")));
-        
+
         pos = TextIO.readFEN("8/8/8/4k3/r3P1R1/4K3/8/8 b - - 0 1");
         final int kV = Evaluate.kV;
         sc = new Search(pos, nullHist, 0, tt, ht);
@@ -353,7 +334,7 @@ public class SearchTest {
         //  1 99
         //-98 99
         assertEquals(pV - kV, getSEE(sc, new Move(TextIO.getSquare("e5"), TextIO.getSquare("e4"), Piece.EMPTY)));
-        
+
         pos = TextIO.readFEN("8/8/4k3/8/r3P3/4K3/8/8 b - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(pV - rV, getSEE(sc, TextIO.stringToMove(pos, "Rxe4+")));
@@ -362,18 +343,18 @@ public class SearchTest {
         pos = TextIO.readFEN("8/8/4k3/8/r3P3/8/4K3/8 b - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(pV, getSEE(sc, TextIO.stringToMove(pos, "Rxe4+")));
-        
+
         pos = TextIO.readFEN("8/3k4/8/8/r1K5/8/8/2R5 w - - 0 1");
         pos.setWhiteMove(false);
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(kV, getSEE(sc, new Move(TextIO.getSquare("a4"), TextIO.getSquare("c4"), Piece.EMPTY)));
 
-        
+
         // Test blocking pieces
         pos = TextIO.readFEN("r7/p2k4/8/r7/P7/8/4K3/R7 b - - 0 1");
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(pV - rV, getSEE(sc, TextIO.stringToMove(pos, "Rxa4")));    // Ra8 doesn't help
-        
+
         pos.setPiece(TextIO.getSquare("a7"), Piece.BBISHOP);
         sc = new Search(pos, nullHist, 0, tt, ht);
         assertEquals(pV - rV, getSEE(sc, TextIO.stringToMove(pos, "Rxa4")));    // Ra8 doesn't help
@@ -414,11 +395,11 @@ public class SearchTest {
         MoveGen.MoveList moves = moveGen.pseudoLegalMoves(pos);
         sc.scoreMoveList(moves, 0);
         for (int i = 0; i < moves.size; i++) {
-            Search.selectBest(moves, i);
+            Search.selectWorst(moves, i);
             if (i > 0) {
                 int sc1 = moves.m[i - 1].score;
                 int sc2 = moves.m[i].score;
-                assertTrue(sc2 <= sc1);
+                assertTrue(sc2 >= sc1);
             }
         }
 
@@ -430,11 +411,11 @@ public class SearchTest {
         assertEquals(17, moves.m[0].score);
         assertEquals(666, moves.m[1].score);
         for (int i = 1; i < moves.size; i++) {
-            Search.selectBest(moves, i);
+            Search.selectWorst(moves, i);
             if (i > 1) {
                 int sc1 = moves.m[i - 1].score;
                 int sc2 = moves.m[i].score;
-                assertTrue(sc2 <= sc1);
+                assertTrue(sc2 >= sc1);
             }
         }
 

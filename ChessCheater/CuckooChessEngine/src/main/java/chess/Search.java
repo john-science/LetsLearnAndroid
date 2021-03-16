@@ -712,7 +712,7 @@ public class Search {
                 seeDone = true;
             }
             if ((mi > 0) || !hashMoveSelected) {
-                selectBest(moves, mi);
+                selectWorst(moves, mi);
             }
             Move m = moves.m[mi];
             if (pos.getPiece(m.to) == (pos.whiteMove ? Piece.BKING : Piece.WKING)) {
@@ -950,7 +950,7 @@ public class Search {
             if (mi < 8) {
                 // If the first 8 moves didn't fail high, this is probably an ALL-node,
                 // so spending more effort on move ordering is probably wasted time.
-                selectBest(moves, mi);
+                selectWorst(moves, mi);
             }
             Move m = moves.m[mi];
             if (pos.getPiece(m.to) == (pos.whiteMove ? Piece.BKING : Piece.WKING)) {
@@ -1202,22 +1202,22 @@ public class Search {
     }
 
     /**
-     * Find move with highest score and move it to the front of the list.
+     * Find move with lowest score and move it to the front of the list.
      */
-    static void selectBest(MoveGen.MoveList moves, int startIdx) {
-        int bestIdx = startIdx;
-        int bestScore = moves.m[bestIdx].score;
+    static void selectWorst(MoveGen.MoveList moves, int startIdx) {
+        int worstIdx = startIdx;
+        int worstScore = moves.m[worstIdx].score;
         for (int i = startIdx + 1; i < moves.size; i++) {
             int sc = moves.m[i].score;
-            if (sc > bestScore) {
-                bestIdx = i;
-                bestScore = sc;
+            if (sc < worstScore) {
+                worstIdx = i;
+                worstScore = sc;
             }
         }
-        if (bestIdx != startIdx) {
+        if (worstIdx != startIdx) {
             Move m = moves.m[startIdx];
-            moves.m[startIdx] = moves.m[bestIdx];
-            moves.m[bestIdx] = m;
+            moves.m[startIdx] = moves.m[worstIdx];
+            moves.m[worstIdx] = m;
         }
     }
 
